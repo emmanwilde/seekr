@@ -547,6 +547,166 @@
       border-color: #402fb5;
     }
 
+    .nav-ramssd-btn {
+      padding: 8px 16px;
+      border: 1px solid var(--primary-color);
+      background: transparent;
+      color: var(--primary-color);
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav-ramssd-btn:hover {
+      background: var(--primary-color);
+      color: var(--bg-color);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      overflow: auto;
+    }
+
+    .modal-content {
+      background-color: var(--card-bg);
+      margin: 2% auto;
+      padding: 20px;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      width: 90%;
+      max-width: 1200px;
+      max-height: 90vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid var(--primary-color);
+    }
+
+    .modal-header h2 {
+      margin: 0;
+      color: var(--secondary-color);
+      font-size: 1.5rem;
+    }
+
+    .modal-close {
+      color: var(--accent-color);
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .modal-close:hover {
+      color: var(--primary-color);
+    }
+
+    .modal-filters {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .modal-filters input {
+      flex: 1;
+      min-width: 180px;
+      padding: 10px;
+      border: 1px solid var(--border-color);
+      border-radius: 5px;
+      background: var(--input-bg);
+      color: var(--text-color);
+      font-size: 14px;
+    }
+
+    .modal-filters input::placeholder {
+      color: var(--accent-color);
+    }
+
+    .modal-filters input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 10px rgba(207, 48, 170, 0.3);
+    }
+
+    .modal-table-container {
+      flex: 1;
+      overflow: auto;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-color);
+    }
+
+    .modal-table-container table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+    }
+
+    .modal-table-container th,
+    .modal-table-container td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .modal-table-container th {
+      background: var(--card-bg);
+      color: var(--secondary-color);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: 1px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .modal-table-container td {
+      color: var(--text-color);
+    }
+
+    .modal-table-container tr:hover td {
+      background: rgba(64, 47, 181, 0.1);
+    }
+
+    .modal-table-container tr.category-row td {
+      background: var(--primary-color);
+      color: white;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .modal-import-section {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .modal-file-info {
+      color: var(--secondary-color);
+      font-size: 14px;
+    }
+
     .inventory-sections-container {
       display: grid;
       grid-template-columns: 50% 50%;
@@ -647,6 +807,7 @@
       <input type="text" id="nav-desc-filter-1" placeholder="Filter by Description 1...">
       <input type="text" id="nav-desc-filter-2" placeholder="Filter by Description 2...">
     </div>
+    <button class="nav-ramssd-btn" id="openRamSsdModal">RAM/SSD</button>
     <div class="navbar-datetime" id="navbar-datetime"></div>
     <div class="theme-switcher">
       <select id="theme-select">
@@ -738,6 +899,53 @@
             </tbody>
           </table>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="ramSsdModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>RAM/SSD INVENTORY</h2>
+        <span class="modal-close" id="closeRamSsdModal">&times;</span>
+      </div>
+      <div class="modal-import-section">
+        <div class="upload-btn-wrapper">
+          <button class="import-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="17 8 12 3 7 8"/>
+              <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+            IMPORT CSV
+          </button>
+          <input type="file" id="ramssd-fileInput" accept=".csv" />
+        </div>
+        <span class="modal-file-info" id="ramssd-file-info">No file loaded</span>
+      </div>
+      <div class="modal-filters">
+        <input type="text" id="ramssd-item-code-filter" placeholder="Filter by Item Code...">
+        <input type="text" id="ramssd-desc-filter-1" placeholder="Filter by Description (1)...">
+        <input type="text" id="ramssd-desc-filter-2" placeholder="Filter by Description (2)...">
+        <input type="text" id="ramssd-desc-filter-3" placeholder="Filter by Description (3)...">
+      </div>
+      <div class="modal-table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>ITEM CODE</th>
+              <th>DESCRIPTION</th>
+              <th>COST</th>
+              <th>MEMORY ALONE</th>
+              <th>BUNDLE</th>
+            </tr>
+          </thead>
+          <tbody id="ramssd-table-body">
+            <tr>
+              <td colspan="5" class="no-data">Upload a CSV file to view contents</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
@@ -954,6 +1162,153 @@
     document.getElementById('theme-select').addEventListener('change', function() {
       document.documentElement.setAttribute('data-theme', this.value);
     });
+
+    // RAM/SSD Modal Functionality
+    const ramSsdModal = document.getElementById('ramSsdModal');
+    const openRamSsdModalBtn = document.getElementById('openRamSsdModal');
+    const closeRamSsdModalBtn = document.getElementById('closeRamSsdModal');
+    const ramssdFileInput = document.getElementById('ramssd-fileInput');
+    const ramssdTableBody = document.getElementById('ramssd-table-body');
+    const ramssdFileInfo = document.getElementById('ramssd-file-info');
+
+    let ramssdData = [];
+
+    openRamSsdModalBtn.addEventListener('click', () => {
+      ramSsdModal.style.display = 'block';
+    });
+
+    closeRamSsdModalBtn.addEventListener('click', () => {
+      ramSsdModal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === ramSsdModal) {
+        ramSsdModal.style.display = 'none';
+      }
+    });
+
+    ramssdFileInput.addEventListener('change', (e) => handleRamSsdFile(e));
+
+    function handleRamSsdFile(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const text = e.target.result;
+          const lines = text.split('\n').filter(line => line.trim());
+          
+          if (lines.length < 2) {
+            alert('CSV file is empty or has no data rows');
+            return;
+          }
+
+          const headers = lines[0].split(',').map(h => h.trim().replace(/"/g, ''));
+          const colMap = {
+            itemCode: headers.findIndex(h => h.toLowerCase().includes('item code')),
+            description: headers.findIndex(h => h.toLowerCase().includes('description')),
+            onHand: headers.findIndex(h => h.toLowerCase().includes('on-hand')),
+            cost: headers.findIndex(h => h.toLowerCase().includes('cost')),
+            memory: headers.findIndex(h => h.toLowerCase().includes('memory alone')),
+            bundle: headers.findIndex(h => h.toLowerCase().includes('bundle'))
+          };
+
+          const items = [];
+          for (let i = 1; i < lines.length; i++) {
+            const cols = parseCSVLine(lines[i]);
+            if (cols.length < 3) continue;
+
+            let itemCode = cols[colMap.itemCode] ? cols[colMap.itemCode].trim() : '';
+            const description = cols[colMap.description] ? cols[colMap.description].trim() : '';
+            const cost = cols[colMap.cost] ? cols[colMap.cost].trim() : '';
+            const memory = cols[colMap.memory] ? cols[colMap.memory].trim() : '';
+            const bundle = cols[colMap.bundle] ? cols[colMap.bundle].trim() : '';
+
+            if (!itemCode && !description) continue;
+
+            if (itemCode.length > 0 && /^\d+$/.test(itemCode.replace(/"/g, ''))) {
+              itemCode = itemCode.padStart(10, '0');
+            }
+
+            items.push({ itemCode, description, cost, memory, bundle });
+          }
+
+          ramssdData = items;
+          ramssdFileInfo.textContent = file.name;
+          renderRamSsdTable(ramssdData);
+        } catch (err) {
+          console.error('Error parsing CSV:', err);
+          alert('Error parsing CSV: ' + err.message);
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function parseCSVLine(line) {
+      const cols = [];
+      let current = '';
+      let inQuotes = false;
+      
+      for (let i = 0; i < line.length; i++) {
+        const char = line[i];
+        if (char === '"') {
+          inQuotes = !inQuotes;
+        } else if (char === ',' && !inQuotes) {
+          cols.push(current);
+          current = '';
+        } else {
+          current += char;
+        }
+      }
+      cols.push(current);
+      return cols;
+    }
+
+    function renderRamSsdTable(data) {
+      if (!data || data.length === 0) {
+        ramssdTableBody.innerHTML = '<tr><td colspan="5" class="no-data">No data found</td></tr>';
+        return;
+      }
+      let html = '';
+      data.forEach(row => {
+        const itemCode = escapeHtml(String(row.itemCode || ''));
+        const itemDesc = escapeHtml(String(row.description || ''));
+        const cost = escapeHtml(String(row.cost || ''));
+        const memory = escapeHtml(String(row.memory || ''));
+        const bundle = escapeHtml(String(row.bundle || ''));
+        html += `<tr>
+          <td class="clickable-cell" onclick="copyToClipboard('${itemCode}', this)">${itemCode}</td>
+          <td class="clickable-cell" onclick="copyToClipboard('${itemDesc.replace(/'/g, "\\'")}', this)">${itemDesc}</td>
+          <td class="clickable-cell" onclick="copyToClipboard('${cost.replace(/'/g, "\\'")}', this)">${cost}</td>
+          <td class="clickable-cell" onclick="copyToClipboard('${memory.replace(/'/g, "\\'")}', this)">${memory}</td>
+          <td class="clickable-cell" onclick="copyToClipboard('${bundle.replace(/'/g, "\\'")}', this)">${bundle}</td>
+        </tr>`;
+      });
+      ramssdTableBody.innerHTML = html;
+    }
+
+    document.getElementById('ramssd-item-code-filter').addEventListener('input', filterRamSsdTable);
+    document.getElementById('ramssd-desc-filter-1').addEventListener('input', filterRamSsdTable);
+    document.getElementById('ramssd-desc-filter-2').addEventListener('input', filterRamSsdTable);
+    document.getElementById('ramssd-desc-filter-3').addEventListener('input', filterRamSsdTable);
+
+    function filterRamSsdTable() {
+      const codeFilter = document.getElementById('ramssd-item-code-filter').value.toLowerCase();
+      const desc1Filter = document.getElementById('ramssd-desc-filter-1').value.toLowerCase();
+      const desc2Filter = document.getElementById('ramssd-desc-filter-2').value.toLowerCase();
+      const desc3Filter = document.getElementById('ramssd-desc-filter-3').value.toLowerCase();
+
+      const filtered = ramssdData.filter(row => {
+        const code = String(row.itemCode || '').toLowerCase();
+        const desc = String(row.description || '').toLowerCase();
+        const memory = String(row.memory || '').toLowerCase();
+        const bundle = String(row.bundle || '').toLowerCase();
+        return code.includes(codeFilter) && desc.includes(desc1Filter) && desc.includes(desc2Filter) && (desc.includes(desc3Filter) || memory.includes(desc3Filter) || bundle.includes(desc3Filter));
+      });
+
+      renderRamSsdTable(filtered);
+    }
   </script>
 </body>
 </html>
