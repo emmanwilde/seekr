@@ -579,13 +579,13 @@
 
     .modal-content {
       background-color: var(--card-bg);
-      margin: 2% auto;
+      margin: 1% auto;
       padding: 20px;
       border: 1px solid var(--border-color);
       border-radius: 12px;
-      width: 90%;
-      max-width: 1200px;
-      max-height: 90vh;
+      width: 100%;
+      max-width: 1600px;
+      max-height: 98vh;
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -808,6 +808,7 @@
       <input type="text" id="nav-desc-filter-2" placeholder="Filter by Description 2...">
     </div>
     <button class="nav-ramssd-btn" id="openRamSsdModal">RAM/SSD</button>
+    <button class="nav-ramssd-btn" id="openNotesModal">NOTES</button>
     <div class="navbar-datetime" id="navbar-datetime"></div>
     <div class="theme-switcher">
       <select id="theme-select">
@@ -950,7 +951,21 @@
     </div>
   </div>
 
+  <div id="notesModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>NOTES</h2>
+        <span class="modal-close" id="closeNotesModal">&times;</span>
+      </div>
+      <div class="modal-table-container">
+        <p style="padding: 20px;">NOTES CONTENT COMING SOON</p>
+      </div>
+    </div>
+  </div>
+
   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    
     if (typeof XLSX === 'undefined') {
       console.log('Warning: XLSX library not loaded');
     }
@@ -964,6 +979,15 @@
     const whsStockTableBody = document.getElementById('whs-stock-table-body');
     const branchFileInfo = document.getElementById('branch-file-info');
     const whsFileInfo = document.getElementById('whs-file-info');
+    const ramSsdModal = document.getElementById('ramSsdModal');
+    const openRamSsdModalBtn = document.getElementById('openRamSsdModal');
+    const closeRamSsdModalBtn = document.getElementById('closeRamSsdModal');
+    const ramssdFileInput = document.getElementById('ramssd-fileInput');
+    const ramssdTableBody = document.getElementById('ramssd-table-body');
+    const ramssdFileInfo = document.getElementById('ramssd-file-info');
+    const notesModal = document.getElementById('notesModal');
+    const openNotesModalBtn = document.getElementById('openNotesModal');
+    const closeNotesModalBtn = document.getElementById('closeNotesModal');
 
     fileInput.addEventListener('change', (e) => handleFile(e, 'branch'));
     whsFileInput.addEventListener('change', (e) => handleFile(e, 'whs'));
@@ -1035,12 +1059,13 @@
       }
       let html = '';
       data.forEach(row => {
-        const itemCode = escapeHtml(String(row.itemCode || ''));
-        const itemDesc = escapeHtml(String(row.itemDesc || ''));
+        const itemCode = String(row.itemCode || '');
+        const itemDesc = String(row.itemDesc || '');
+        const quantity = escapeHtml(String(row.quantity || ''));
         html += `<tr>
-          <td class="clickable-cell" onclick="copyToClipboard('${itemCode}', this)">${itemCode}</td>
-          <td class="clickable-cell" onclick="copyToClipboard('${itemDesc.replace(/'/g, "\\'")}', this)">${itemDesc}</td>
-          <td>${escapeHtml(String(row.quantity || ''))}</td>
+          <td class="clickable-cell" data-copy="${escapeHtml(itemCode)}">${escapeHtml(itemCode)}</td>
+          <td class="clickable-cell" data-copy="${escapeHtml(itemDesc)}">${escapeHtml(itemDesc)}</td>
+          <td>${quantity}</td>
         </tr>`;
       });
       stockTableBody.innerHTML = html;
@@ -1053,12 +1078,13 @@
       }
       let html = '';
       data.forEach(row => {
-        const itemCode = escapeHtml(String(row.itemCode || ''));
-        const itemDesc = escapeHtml(String(row.itemDesc || ''));
+        const itemCode = String(row.itemCode || '');
+        const itemDesc = String(row.itemDesc || '');
+        const quantity = escapeHtml(String(row.quantity || ''));
         html += `<tr>
-          <td class="clickable-cell" onclick="copyToClipboard('${itemCode}', this)">${itemCode}</td>
-          <td class="clickable-cell" onclick="copyToClipboard('${itemDesc.replace(/'/g, "\\'")}', this)">${itemDesc}</td>
-          <td>${escapeHtml(String(row.quantity || ''))}</td>
+          <td class="clickable-cell" data-copy="${escapeHtml(itemCode)}">${escapeHtml(itemCode)}</td>
+          <td class="clickable-cell" data-copy="${escapeHtml(itemDesc)}">${escapeHtml(itemDesc)}</td>
+          <td>${quantity}</td>
         </tr>`;
       });
       whsStockTableBody.innerHTML = html;
@@ -1076,12 +1102,26 @@
       });
     }
 
-    document.getElementById('item-code-filter').addEventListener('input', filterStockTable);
-    document.getElementById('desc-filter-1').addEventListener('input', filterStockTable);
-    document.getElementById('desc-filter-2').addEventListener('input', filterStockTable);
-    document.getElementById('whs-item-code-filter').addEventListener('input', filterWHSStockTable);
-    document.getElementById('whs-desc-filter-1').addEventListener('input', filterWHSStockTable);
-    document.getElementById('whs-desc-filter-2').addEventListener('input', filterWHSStockTable);
+    stockTableBody.addEventListener('click', function(e) {
+      const cell = e.target.closest('.clickable-cell');
+      if (cell && cell.dataset.copy) {
+        copyToClipboard(cell.dataset.copy, cell);
+      }
+    });
+
+    whsStockTableBody.addEventListener('click', function(e) {
+      const cell = e.target.closest('.clickable-cell');
+      if (cell && cell.dataset.copy) {
+        copyToClipboard(cell.dataset.copy, cell);
+      }
+    });
+
+    ramssdTableBody.addEventListener('click', function(e) {
+      const cell = e.target.closest('.clickable-cell');
+      if (cell && cell.dataset.copy) {
+        copyToClipboard(cell.dataset.copy, cell);
+      }
+    });
 
     function filterStockTable() {
       const codeFilter = document.getElementById('item-code-filter').value.toLowerCase();
@@ -1097,6 +1137,10 @@
       renderStockTable(filtered);
     }
 
+    document.getElementById('item-code-filter').addEventListener('input', filterStockTable);
+    document.getElementById('desc-filter-1').addEventListener('input', filterStockTable);
+    document.getElementById('desc-filter-2').addEventListener('input', filterStockTable);
+
     function filterWHSStockTable() {
       const codeFilter = document.getElementById('whs-item-code-filter').value.toLowerCase();
       const desc1Filter = document.getElementById('whs-desc-filter-1').value.toLowerCase();
@@ -1110,6 +1154,10 @@
 
       renderWHSStockTable(filtered);
     }
+
+    document.getElementById('whs-item-code-filter').addEventListener('input', filterWHSStockTable);
+    document.getElementById('whs-desc-filter-1').addEventListener('input', filterWHSStockTable);
+    document.getElementById('whs-desc-filter-2').addEventListener('input', filterWHSStockTable);
 
     function escapeHtml(text) {
       const div = document.createElement('div');
@@ -1164,12 +1212,6 @@
     });
 
     // RAM/SSD Modal Functionality
-    const ramSsdModal = document.getElementById('ramSsdModal');
-    const openRamSsdModalBtn = document.getElementById('openRamSsdModal');
-    const closeRamSsdModalBtn = document.getElementById('closeRamSsdModal');
-    const ramssdFileInput = document.getElementById('ramssd-fileInput');
-    const ramssdTableBody = document.getElementById('ramssd-table-body');
-    const ramssdFileInfo = document.getElementById('ramssd-file-info');
 
     let ramssdData = [];
 
@@ -1185,6 +1227,17 @@
       if (e.target === ramSsdModal) {
         ramSsdModal.style.display = 'none';
       }
+      if (e.target === notesModal) {
+        notesModal.style.display = 'none';
+      }
+    });
+
+    openNotesModalBtn.addEventListener('click', () => {
+      notesModal.style.display = 'block';
+    });
+
+    closeNotesModalBtn.addEventListener('click', () => {
+      notesModal.style.display = 'none';
     });
 
     ramssdFileInput.addEventListener('change', (e) => handleRamSsdFile(e));
@@ -1272,17 +1325,17 @@
       }
       let html = '';
       data.forEach(row => {
-        const itemCode = escapeHtml(String(row.itemCode || ''));
-        const itemDesc = escapeHtml(String(row.description || ''));
-        const cost = escapeHtml(String(row.cost || ''));
-        const memory = escapeHtml(String(row.memory || ''));
-        const bundle = escapeHtml(String(row.bundle || ''));
+        const itemCode = String(row.itemCode || '');
+        const itemDesc = String(row.description || '');
+        const cost = String(row.cost || '');
+        const memory = String(row.memory || '');
+        const bundle = String(row.bundle || '');
         html += `<tr>
-          <td class="clickable-cell" onclick="copyToClipboard('${itemCode}', this)">${itemCode}</td>
-          <td class="clickable-cell" onclick="copyToClipboard('${itemDesc.replace(/'/g, "\\'")}', this)">${itemDesc}</td>
-          <td class="clickable-cell" onclick="copyToClipboard('${cost.replace(/'/g, "\\'")}', this)">${cost}</td>
-          <td class="clickable-cell" onclick="copyToClipboard('${memory.replace(/'/g, "\\'")}', this)">${memory}</td>
-          <td class="clickable-cell" onclick="copyToClipboard('${bundle.replace(/'/g, "\\'")}', this)">${bundle}</td>
+          <td class="clickable-cell" data-copy="${escapeHtml(itemCode)}">${escapeHtml(itemCode)}</td>
+          <td class="clickable-cell" data-copy="${escapeHtml(itemDesc)}">${escapeHtml(itemDesc)}</td>
+          <td class="clickable-cell" data-copy="${escapeHtml(cost)}">${escapeHtml(cost)}</td>
+          <td class="clickable-cell" data-copy="${escapeHtml(memory)}">${escapeHtml(memory)}</td>
+          <td class="clickable-cell" data-copy="${escapeHtml(bundle)}">${escapeHtml(bundle)}</td>
         </tr>`;
       });
       ramssdTableBody.innerHTML = html;
@@ -1309,6 +1362,8 @@
 
       renderRamSsdTable(filtered);
     }
+    
+    }); // DOMContentLoaded
   </script>
 </body>
 </html>
