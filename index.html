@@ -618,6 +618,13 @@
       color: var(--primary-color);
     }
 
+    .modal-subtitle {
+      font-size: 13px;
+      color: var(--secondary-color);
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
     .modal-filters {
       display: flex;
       gap: 15px;
@@ -784,6 +791,238 @@
     .table-section {
       margin-top: 30px;
     }
+
+    /* Quotation Calculator Styles */
+    .calc-container {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .calc-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .calc-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .calc-group label {
+      font-weight: 600;
+      color: var(--secondary-color);
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+
+    .calc-group input, .calc-group select {
+      padding: 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      background: var(--input-bg);
+      color: var(--text-color);
+      font-size: 16px;
+      transition: border-color 0.2s;
+    }
+
+    .calc-group input:focus, .calc-group select:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 10px rgba(207, 48, 170, 0.2);
+    }
+
+    .terms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+
+    .term-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      padding: 8px;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+
+    .term-item:hover:not(.disabled) {
+      background: rgba(207, 48, 170, 0.1);
+    }
+
+    .term-item.disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .calc-results {
+      background: rgba(207, 48, 170, 0.05);
+      border-left: 4px solid var(--primary-color);
+      padding: 20px;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .result-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .result-label {
+      color: var(--secondary-color);
+      font-size: 14px;
+    }
+
+    .result-value {
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--text-color);
+    }
+
+    .result-value.highlight {
+      color: var(--primary-color);
+      font-size: 24px;
+    }
+
+    .quote-header-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    /* New Quotation Layout Styles */
+    .quote-layout {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      padding: 10px;
+      align-items: flex-start;
+    }
+
+    .quote-left-panel {
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .quote-right-panel {
+      width: 70%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .items-list-area {
+      width: 100%;
+      height: 200px;
+      padding: 15px;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--text-color);
+      font-family: inherit;
+      font-size: 16px;
+      resize: vertical;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .items-list-area:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 10px rgba(207, 48, 170, 0.2);
+    }
+
+    .quote-summary-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    .summary-item {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .summary-label {
+      font-size: 12px;
+      color: var(--secondary-color);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .summary-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-color);
+    }
+
+    .summary-value.highlight {
+      color: var(--primary-color);
+    }
+
+    .settings-panel {
+      display: none;
+      background: var(--bg-color);
+      border: 1px solid var(--border-color);
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 10px;
+      animation: slideDown 0.3s ease-out;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .settings-panel.active {
+      display: block;
+    }
+
+    .cogwheel-btn {
+      background: transparent;
+      border: none;
+      color: var(--secondary-color);
+      cursor: pointer;
+      padding: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s, transform 0.5s;
+    }
+
+    .cogwheel-btn:hover {
+      color: var(--primary-color);
+      transform: rotate(90deg);
+    }
+
+    .cogwheel-btn svg {
+      width: 24px;
+      height: 24px;
+    }
   </style>
 </head>
 <body>
@@ -808,6 +1047,7 @@
       <input type="text" id="nav-desc-filter-2" placeholder="Filter by Description 2...">
     </div>
     <button class="nav-ramssd-btn" id="openRamSsdModal">RAM/SSD</button>
+    <button class="nav-ramssd-btn" id="openQuotationModal">QUOTATION</button>
     <button class="nav-ramssd-btn" id="openNotesModal">NOTES</button>
     <div class="navbar-datetime" id="navbar-datetime"></div>
     <div class="theme-switcher">
@@ -951,6 +1191,138 @@
     </div>
   </div>
 
+  <div id="quotationModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 15px;">
+          <h2>QUOTATION ENGINE</h2>
+          <button class="cogwheel-btn" id="toggleQuoteSettings" title="Calculator Settings">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            </svg>
+          </button>
+        </div>
+        <span class="modal-close" id="closeQuotationModal">&times;</span>
+      </div>
+      <div class="modal-table-container">
+        <div class="quote-layout">
+          <div class="quote-left-panel">
+            <div class="quote-summary-bar">
+              <div class="summary-item">
+                <span class="summary-label">Standard Price (SRP)</span>
+                <span class="summary-value" id="summary-srp">₱0.00</span>
+              </div>
+              <div class="summary-item">
+                <span class="summary-label">Cash Discount Price</span>
+                <span class="summary-value" id="summary-cash">₱0.00</span>
+              </div>
+              <div class="summary-item">
+                <span class="summary-label" style="font-size: 14px;">✨ You Save: <span id="summary-save">₱0.00</span></span>
+                <span class="summary-value" style="font-size: 12px; color: var(--secondary-color);">When you pay via Cash or Bank Transfer.</span>
+              </div>
+              <div class="summary-item" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border-color);">
+                <span class="summary-label" style="font-size: 14px; letter-spacing: 0.5px;">Financing Estimates</span>
+                <div style="display: flex; flex-direction: column; gap: 6px; margin-top: 6px;">
+                  <div style="display: flex; justify-content: space-between;">
+                    <span class="summary-label">Bank:</span>
+                    <span class="summary-value" id="summary-bank" style="font-size: 14px;">None</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between;">
+                    <span class="summary-label">Term:</span>
+                    <span class="summary-value" id="summary-term" style="font-size: 14px;">None</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between;">
+                    <span class="summary-label">Monthly:</span>
+                    <span class="summary-value highlight" id="summary-monthly" style="font-size: 14px;">₱0.00 / mo</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between;">
+                    <span class="summary-label">Total Cost:</span>
+                    <span class="summary-value highlight" id="summary-total" style="font-size: 16px;">₱0.00</span>
+                  </div>
+                </div>
+              </div>
+              <div class="summary-item" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border-color);">
+                <span class="modal-subtitle" style="font-size: 13px; line-height: 1.5; text-transform: none; letter-spacing: normal;">
+                  *PRICE MAY CHANGE WITHOUT PRIOR NOTICE*<br>
+                  Quote Date: <span id="quote-date"></span><br>
+                  Quotation Validity: 2 days only<br>
+                  EMS @ PCWORX SM FAIRVIEW
+                </span>
+              </div>
+            </div>
+
+            <div class="settings-panel" id="quoteSettingsPanel">
+              <div class="calc-container" style="padding: 0;">
+                <div class="quote-header-info">
+                  <div class="upload-btn-wrapper">
+                    <button class="import-btn">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="17 8 12 3 7 8"/>
+                        <line x1="12" y1="3" x2="12" y2="15"/>
+                      </svg>
+                      IMPORT RATES (CSV)
+                    </button>
+                    <input type="file" id="quote-csv-file" accept=".csv" />
+                  </div>
+                  <span class="modal-file-info" id="quote-file-info">No rates loaded</span>
+                </div>
+
+                <div class="calc-group">
+                  <label for="item-cost">Item Cost (Capital)</label>
+                  <input type="number" id="item-cost" placeholder="0.00" value="0">
+                </div>
+                <div class="calc-group">
+                  <label>Suggested SRP (Cost + 20%)</label>
+                  <input type="text" id="base-srp-display" placeholder="₱0.00" value="₱0.00">
+                </div>
+
+                <div class="calc-group" style="margin-top: 10px;">
+                  <label for="cash-transfer-value">CASH/BANK TRANSFER</label>
+                  <input type="text" id="cash-transfer-value" placeholder="Enter cash price or details...">
+                </div>
+
+                <div class="calc-group">
+                  <label for="quote-bank-select">Select Bank / Payment Method</label>
+                  <select id="quote-bank-select">
+                    <option value="">-- Upload CSV first --</option>
+                  </select>
+                </div>
+
+                <div class="calc-group">
+                  <label>Select Repayment Term</label>
+                  <div class="terms-grid" id="quote-terms-container">
+                    <!-- Terms will be populated here -->
+                  </div>
+                </div>
+
+                <div class="calc-results" style="margin-top: 15px;">
+                <div class="result-item">
+                  <span class="result-label">TWAS (0.5%):</span>
+                  <span class="result-value" id="quote-twas-display">₱0.00</span>
+                </div>
+                <div class="result-item">
+                  <span class="result-label">Bank MDR Rate:</span>
+                  <span class="result-value" id="quote-rate-display">0.00%</span>
+                </div>
+                <div class="result-item">
+                  <span class="result-label">Final Terminal Price:</span>
+                  <span class="result-value highlight" id="quote-swipe-display">₱0.00</span>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="quote-right-panel">
+            <textarea class="items-list-area" placeholder="List items here (e.g., 1x Laptop, 2x Mouse)..."></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div id="notesModal" class="modal">
     <div class="modal-content">
       <div class="modal-header">
@@ -985,6 +1357,9 @@
     const ramssdFileInput = document.getElementById('ramssd-fileInput');
     const ramssdTableBody = document.getElementById('ramssd-table-body');
     const ramssdFileInfo = document.getElementById('ramssd-file-info');
+    const quotationModal = document.getElementById('quotationModal');
+    const openQuotationModalBtn = document.getElementById('openQuotationModal');
+    const closeQuotationModalBtn = document.getElementById('closeQuotationModal');
     const notesModal = document.getElementById('notesModal');
     const openNotesModalBtn = document.getElementById('openNotesModal');
     const closeNotesModalBtn = document.getElementById('closeNotesModal');
@@ -1227,9 +1602,23 @@
       if (e.target === ramSsdModal) {
         ramSsdModal.style.display = 'none';
       }
+      if (e.target === quotationModal) {
+        quotationModal.style.display = 'none';
+      }
       if (e.target === notesModal) {
         notesModal.style.display = 'none';
       }
+    });
+
+    openQuotationModalBtn.addEventListener('click', () => {
+      const now = new Date();
+      const quoteDate = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: '2-digit' });
+      document.getElementById('quote-date').textContent = quoteDate;
+      quotationModal.style.display = 'block';
+    });
+
+    closeQuotationModalBtn.addEventListener('click', () => {
+      quotationModal.style.display = 'none';
     });
 
     openNotesModalBtn.addEventListener('click', () => {
@@ -1361,6 +1750,229 @@
       });
 
       renderRamSsdTable(filtered);
+    }
+
+    // Quotation Engine Functionality
+
+    let quoteBankData = [];
+    const quoteCsvInput = document.getElementById('quote-csv-file');
+    const quoteFileInfo = document.getElementById('quote-file-info');
+    const quoteBankSelect = document.getElementById('quote-bank-select');
+    const itemCostInput = document.getElementById('item-cost');
+    const baseSrpDisplay = document.getElementById('base-srp-display');
+    const quoteTermsContainer = document.getElementById('quote-terms-container');
+    const quoteRateDisplay = document.getElementById('quote-rate-display');
+    const quoteTwasDisplay = document.getElementById('quote-twas-display');
+    const quoteSwipeDisplay = document.getElementById('quote-swipe-display');
+    const quoteMonthlyDisplay = document.getElementById('quote-monthly-display');
+
+    // New Summary Elements
+    const summarySrp = document.getElementById('summary-srp');
+    const summaryCash = document.getElementById('summary-cash');
+    const summaryBank = document.getElementById('summary-bank');
+    const summaryTerm = document.getElementById('summary-term');
+    const summaryMonthly = document.getElementById('summary-monthly');
+    const summaryTotal = document.getElementById('summary-total');
+    const summarySave = document.getElementById('summary-save');
+    const toggleSettingsBtn = document.getElementById('toggleQuoteSettings');
+    const settingsPanel = document.getElementById('quoteSettingsPanel');
+    const cashTransferInput = document.getElementById('cash-transfer-value');
+
+    toggleSettingsBtn.addEventListener('click', () => {
+      settingsPanel.classList.toggle('active');
+    });
+
+    cashTransferInput.addEventListener('input', () => {
+      let val = cashTransferInput.value;
+      let srpText = baseSrpDisplay.value.replace(/[₱,]/g, '');
+      const baseSrp = parseFloat(srpText) || 0;
+      
+      if (val) {
+        summaryCash.textContent = val.startsWith('₱') ? val : '₱' + val;
+        const cashValue = parseFloat(val.replace(/[₱,]/g, '')) || 0;
+        const saveAmount = baseSrp - cashValue;
+        summarySave.textContent = saveAmount >= 0 ? "₱" + saveAmount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) : "₱0.00";
+      } else {
+        summaryCash.textContent = "₱0.00";
+        summarySave.textContent = "₱0.00";
+      }
+    });
+
+    const quoteAllTerms = [
+      { id: 'straight', label: 'Straight' },
+      { id: '3', label: '3 Mos' },
+      { id: '6', label: '6 Mos' },
+      { id: '9', label: '9 Mos' },
+      { id: '12', label: '12 Mos' }
+    ];
+
+    quoteCsvInput.addEventListener('change', (e) => handleQuoteCSV(e));
+    itemCostInput.addEventListener('input', () => {
+      const cost = parseFloat(itemCostInput.value) || 0;
+      const baseSrp = cost * 1.20;
+      baseSrpDisplay.value = "₱" + baseSrp.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      calculateQuote();
+    });
+    baseSrpDisplay.addEventListener('input', calculateQuote);
+    quoteBankSelect.addEventListener('change', () => {
+      updateQuoteTerms();
+      calculateQuote();
+    });
+
+    function handleQuoteCSV(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const text = e.target.result;
+          const lines = text.split(/\r?\n/).filter(line => line.trim());
+          if (lines.length < 2) {
+            alert("The file appears to be empty or structurally invalid.");
+            return;
+          }
+
+          const headers = lines[0].split(',').map(h => h.trim().toUpperCase());
+          let parsedBanks = [];
+
+          for (let i = 1; i < lines.length; i++) {
+            const columns = lines[i].split(',');
+            const bankName = columns[0].trim();
+            if (!bankName) continue;
+
+            let ratesObj = {};
+            for (let j = 1; j < headers.length; j++) {
+              if (columns[j] === undefined) continue;
+              let cellValue = columns[j].replace('%', '').trim();
+              if (cellValue !== "") {
+                let numericRate = parseFloat(cellValue);
+                if (!isNaN(numericRate)) {
+                  let targetTermKey = headers[j] === 'STRAIGHT' ? 'straight' : headers[j];
+                  ratesObj[targetTermKey] = numericRate;
+                }
+              }
+            }
+
+            if (Object.keys(ratesObj).length > 0) {
+              parsedBanks.push({ name: bankName, rates: ratesObj });
+            }
+          }
+
+          if (parsedBanks.length > 0) {
+            quoteBankData = parsedBanks;
+            quoteFileInfo.textContent = file.name;
+            populateBankDropdown();
+          } else {
+            alert("Processing failed. Make sure your column headers match: BANK, STRAIGHT, 3, 6, 9, 12");
+          }
+        } catch (err) {
+          console.error('Error parsing Quote CSV:', err);
+          alert('Error parsing Quote CSV: ' + err.message);
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function populateBankDropdown() {
+      quoteBankSelect.innerHTML = '<option value="">-- Select Bank --</option>';
+      quoteBankData.forEach((bank, index) => {
+        let option = document.createElement("option");
+        option.value = index;
+        option.text = bank.name;
+        quoteBankSelect.appendChild(option);
+      });
+      updateQuoteTerms();
+    }
+
+    function updateQuoteTerms() {
+      quoteTermsContainer.innerHTML = '';
+      if (quoteBankSelect.value === "") return;
+
+      const selectedBank = quoteBankData[quoteBankSelect.value];
+      let firstChecked = false;
+
+      quoteAllTerms.forEach(term => {
+        const hasTerm = selectedBank.rates[term.id] !== undefined;
+        
+        const labelEl = document.createElement("label");
+        labelEl.className = "term-item" + (hasTerm ? "" : " disabled");
+
+        const inputEl = document.createElement("input");
+        inputEl.type = "radio";
+        inputEl.name = "quote-term-option";
+        inputEl.value = term.id;
+        inputEl.disabled = !hasTerm;
+        inputEl.onchange = calculateQuote;
+
+        if (hasTerm && !firstChecked) {
+          inputEl.checked = true;
+          firstChecked = true;
+        }
+
+        labelEl.appendChild(inputEl);
+        labelEl.appendChild(document.createTextNode(` ${term.label}`));
+        quoteTermsContainer.appendChild(labelEl);
+      });
+    }
+
+    function calculateQuote() {
+      // Get base SRP from display field (handle possible manual edits/formatting)
+      let srpText = baseSrpDisplay.value.replace(/[₱,]/g, '');
+      const baseSrp = parseFloat(srpText) || 0;
+      
+      // Update Summary SRP - Ensure symbol is present
+      let displayValue = baseSrpDisplay.value;
+      if (displayValue) {
+        summarySrp.textContent = displayValue.startsWith('₱') ? displayValue : '₱' + displayValue;
+      } else {
+        summarySrp.textContent = "₱0.00";
+      }
+
+      if (quoteBankSelect.value === "") {
+        quoteRateDisplay.textContent = "0.00%";
+        quoteTwasDisplay.textContent = "₱0.00";
+        quoteSwipeDisplay.textContent = "₱0.00";
+        summaryBank.textContent = "None";
+        summaryTerm.textContent = "None";
+        summaryMonthly.textContent = "₱0.00 / mo";
+        summaryTotal.textContent = "₱0.00";
+        return;
+      }
+
+      const selectedBank = quoteBankData[quoteBankSelect.value];
+      summaryBank.textContent = selectedBank.name;
+
+      const selectedTermRadio = document.querySelector('input[name="quote-term-option"]:checked');
+      
+      if (!selectedTermRadio) {
+        summaryTerm.textContent = "None";
+        summaryMonthly.textContent = "₱0.00 / mo";
+        return;
+      }
+      
+      const termId = selectedTermRadio.value;
+      const termLabelObj = quoteAllTerms.find(t => t.id === termId);
+      summaryTerm.textContent = termLabelObj ? termLabelObj.label : "None";
+
+      const ratePercentage = selectedBank.rates[termId] || 0;
+      quoteRateDisplay.textContent = ratePercentage.toFixed(2) + "%";
+
+      const twas = baseSrp * 0.005;
+      quoteTwasDisplay.textContent = "₱" + twas.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+      const rateDecimal = ratePercentage / 100;
+      const mdrAmount = baseSrp * rateDecimal;
+      const finalSwipePrice = baseSrp + twas + mdrAmount;
+      
+      const monthsDivider = termId === 'straight' ? 1 : parseInt(termId);
+      const monthlyDue = finalSwipePrice / monthsDivider;
+
+      const monthlyText = "₱" + monthlyDue.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + (termId === 'straight' ? " (Straight)" : " / mo");
+      
+      quoteSwipeDisplay.textContent = "₱" + finalSwipePrice.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      summaryMonthly.textContent = monthlyText;
+      summaryTotal.textContent = "₱" + finalSwipePrice.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
     }
     
     }); // DOMContentLoaded
