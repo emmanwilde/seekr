@@ -109,266 +109,6 @@
       box-sizing: border-box;
     }
 
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 2.5rem;
-      background: linear-gradient(90deg, #a099d8, #cf30aa);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .upload-section {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 40px;
-    }
-
-    .upload-btn-wrapper {
-      position: relative;
-      overflow: hidden;
-      display: inline-block;
-      z-index: 100;
-    }
-
-    .btn {
-      border: none;
-      color: white;
-      background-color: transparent;
-      padding: 15px 40px;
-      font-size: 18px;
-      cursor: pointer;
-      position: relative;
-      width: 314px;
-      height: 70px;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .glow {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      overflow: hidden;
-      filter: blur(30px);
-      opacity: 0.4;
-      z-index: -1;
-    }
-
-    .glow::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(60deg);
-      width: 999px;
-      height: 999px;
-      background-image: conic-gradient(
-        #000,
-        #402fb5 5%,
-        #000 38%,
-        #000 50%,
-        #cf30aa 60%,
-        #000 87%
-      );
-    }
-
-    .darkBorderBg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border-radius: 12px;
-      overflow: hidden;
-      z-index: -2;
-    }
-
-    .darkBorderBg::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(82deg);
-      width: 600px;
-      height: 600px;
-      background-image: conic-gradient(
-        rgba(0, 0, 0, 0),
-        #18116a,
-        rgba(0, 0, 0, 0) 10%,
-        rgba(0, 0, 0, 0) 50%,
-        #6e1b60,
-        rgba(0, 0, 0, 0) 60%
-      );
-    }
-
-    .white {
-      position: absolute;
-      top: 3px;
-      left: 3px;
-      right: 3px;
-      bottom: 3px;
-      border-radius: 10px;
-      overflow: hidden;
-      z-index: -1;
-      filter: blur(2px);
-    }
-
-    .white::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(83deg);
-      width: 600px;
-      height: 600px;
-      background-image: conic-gradient(
-        rgba(0, 0, 0, 0) 0%,
-        #a099d8,
-        rgba(0, 0, 0, 0) 8%,
-        rgba(0, 0, 0, 0) 50%,
-        #dfa2da,
-        rgba(0, 0, 0, 0) 58%
-      );
-      filter: brightness(1.4);
-    }
-
-    .border {
-      position: absolute;
-      top: 5px;
-      left: 5px;
-      right: 5px;
-      bottom: 5px;
-      border-radius: 11px;
-      overflow: hidden;
-      z-index: -1;
-    }
-
-    .border::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(70deg);
-      width: 600px;
-      height: 600px;
-      background-image: conic-gradient(
-        #1c191c,
-        #402fb5 5%,
-        #1c191c 14%,
-        #1c191c 50%,
-        #cf30aa 60%,
-        #1c191c 64%
-      );
-      filter: brightness(1.3);
-    }
-
-    .btn-text {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .btn:hover .darkBorderBg::before,
-    .btn:hover .glow::before,
-    .btn:hover .white::before,
-    .btn:hover .border::before {
-      transform: translate(-50%, -50%) rotate(260deg);
-      transition: all 2s;
-    }
-
-    .upload-btn-wrapper {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .upload-btn-wrapper input[type=file] {
-      position: absolute;
-      left: 0;
-      top: 0;
-      opacity: 0;
-      cursor: pointer;
-      width: 100%;
-      height: 100%;
-      z-index: 10;
-    }
-
-    .table-container {
-      overflow-x: auto;
-      border-radius: 12px;
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-    }
-
-    .clickable-cell {
-      cursor: pointer;
-      user-select: none;
-      transition: color 0.2s, text-shadow 0.2s;
-    }
-
-    .clickable-cell:hover {
-      color: var(--primary-color);
-      text-shadow: 0 0 10px rgba(207, 48, 170, 0.5);
-    }
-
-    .clickable-cell.copied {
-      color: #28a745;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 600px;
-    }
-
-    th, td {
-      padding: 15px 20px;
-      text-align: left;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    th {
-      background: var(--card-bg);
-      color: var(--secondary-color);
-      font-weight: 600;
-      text-transform: uppercase;
-      font-size: 14px;
-      letter-spacing: 1px;
-      position: sticky;
-      top: 0;
-    }
-
-    tr:hover td {
-      background: rgba(64, 47, 181, 0.1);
-    }
-
-    td {
-      color: var(--text-color);
-    }
-
-    tr:nth-child(even) td {
-      background: var(--bg-color);
-    }
-
-    .no-data {
-      text-align: center;
-      padding: 60px;
-      color: var(--accent-color);
-      font-size: 18px;
-    }
-
-    .file-info {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #a099d8;
-    }
-
     .navbar {
       display: flex;
       align-items: center;
@@ -386,34 +126,6 @@
       color: var(--primary-color);
       text-decoration: none;
       white-space: nowrap;
-    }
-
-    .navbar-search {
-      display: flex;
-      gap: 10px;
-      flex: 1;
-      justify-content: center;
-      max-width: 800px;
-    }
-
-    .navbar-search input {
-      padding: 8px 12px;
-      border: 1px solid var(--border-color);
-      border-radius: 5px;
-      background: var(--input-bg);
-      color: var(--text-color);
-      font-size: 13px;
-      width: 200px;
-    }
-
-    .navbar-search input::placeholder {
-      color: var(--accent-color);
-    }
-
-    .navbar-search input:focus {
-      outline: none;
-      border-color: var(--primary-color);
-      box-shadow: 0 0 10px rgba(207, 48, 170, 0.3);
     }
 
     .navbar-datetime {
@@ -439,115 +151,12 @@
       cursor: pointer;
     }
 
-    .theme-switcher select:focus {
-      outline: none;
-      border-color: var(--primary-color);
-    }
-
-    .brand-animation {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .pyramid-loader {
-      position: relative;
-      width: 60px;
-      height: 60px;
-      display: block;
-      transform-style: preserve-3d;
-      transform: rotateX(-20deg);
-    }
-
-    .pyramid-loader .wrapper {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transform-style: preserve-3d;
-      animation: spin 4s linear infinite;
-    }
-
-    @keyframes spin {
-      100% {
-        transform: rotateY(360deg);
-      }
-    }
-
-    .pyramid-loader .wrapper .side {
-      width: 25px;
-      height: 25px;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      margin: auto;
-      transform-origin: center top;
-      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-    }
-
-    .pyramid-loader .wrapper .side1 {
-      transform: rotateZ(-30deg) rotateY(90deg);
-      background: conic-gradient(#00FFFF, #00CED1, #20B2AA, #008B8B);
-    }
-
-    .pyramid-loader .wrapper .side2 {
-      transform: rotateZ(30deg) rotateY(90deg);
-      background: conic-gradient(#008B8B, #20B2AA, #00CED1, #00FFFF);
-    }
-
-    .pyramid-loader .wrapper .side3 {
-      transform: rotateX(30deg);
-      background: conic-gradient(#008B8B, #20B2AA, #00CED1, #00FFFF);
-    }
-
-    .pyramid-loader .wrapper .side4 {
-      transform: rotateX(-30deg);
-      background: conic-gradient(#00FFFF, #00CED1, #20B2AA, #008B8B);
-    }
-
-    .pyramid-loader .wrapper .shadow {
-      width: 20px;
-      height: 20px;
-      background: #8B5AD5;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      margin: auto;
-      transform: rotateX(90deg) translateZ(-40px);
-      filter: blur(12px);
-    }
-
-    .nav-tabs {
+    .nav-buttons {
       display: flex;
       gap: 10px;
-      margin-bottom: 30px;
     }
 
-    .nav-tab {
-      padding: 10px 20px;
-      border: 1px solid #402fb5;
-      background: transparent;
-      color: #a099d8;
-      cursor: pointer;
-      border-radius: 5px;
-      font-weight: 500;
-      transition: all 0.2s;
-    }
-
-    .nav-tab:hover {
-      background: rgba(64, 47, 181, 0.3);
-    }
-
-    .nav-tab.active {
-      background: #402fb5;
-      color: white;
-      border-color: #402fb5;
-    }
-
-    .nav-ramssd-btn {
+    .nav-btn {
       padding: 8px 16px;
       border: 1px solid var(--primary-color);
       background: transparent;
@@ -560,160 +169,72 @@
       white-space: nowrap;
     }
 
-    .nav-ramssd-btn:hover {
+    .nav-btn:hover, .nav-btn.active {
       background: var(--primary-color);
       color: var(--bg-color);
     }
 
-    .modal {
+    .page {
       display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.7);
-      overflow: auto;
+      animation: fadeIn 0.3s ease-in-out;
     }
 
-    .modal-content {
-      background-color: var(--card-bg);
-      margin: 1% auto;
-      padding: 20px;
+    .page.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Home Page Layout */
+    .home-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+      height: calc(100vh - 120px);
+    }
+
+    .home-panel {
+      background: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: 12px;
-      width: 100%;
-      max-width: 1600px;
-      max-height: 98vh;
-      overflow: hidden;
       display: flex;
       flex-direction: column;
+      padding: 20px;
     }
 
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      padding-bottom: 15px;
+    .home-panel h2 {
+      text-align: center;
+      color: var(--secondary-color);
       border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
 
-    .modal-header h2 {
-      margin: 0;
-      color: var(--secondary-color);
-      font-size: 1.5rem;
-    }
-
-    .modal-close {
-      color: var(--accent-color);
-      font-size: 28px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: color 0.2s;
-    }
-
-    .modal-close:hover {
-      color: var(--primary-color);
-    }
-
-    .modal-subtitle {
-      font-size: 13px;
-      color: var(--secondary-color);
-      margin-top: 4px;
-      line-height: 1.4;
-    }
-
-    .modal-filters {
-      display: flex;
-      gap: 15px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-
-    .modal-filters input {
+    .home-textarea {
       flex: 1;
-      min-width: 180px;
-      padding: 10px;
-      border: 1px solid var(--border-color);
-      border-radius: 5px;
-      background: var(--input-bg);
-      color: var(--text-color);
-      font-size: 14px;
-    }
-
-    .modal-filters input::placeholder {
-      color: var(--accent-color);
-    }
-
-    .modal-filters input:focus {
-      outline: none;
-      border-color: var(--primary-color);
-      box-shadow: 0 0 10px rgba(207, 48, 170, 0.3);
-    }
-
-    .modal-table-container {
-      flex: 1;
-      overflow: auto;
-      border-radius: 12px;
-      border: 1px solid var(--border-color);
-      background: var(--bg-color);
-    }
-
-    .modal-table-container table {
       width: 100%;
-      border-collapse: collapse;
-      min-width: 600px;
-    }
-
-    .modal-table-container th,
-    .modal-table-container td {
-      padding: 12px 15px;
-      text-align: left;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .modal-table-container th {
-      background: var(--card-bg);
-      color: var(--secondary-color);
-      font-weight: 600;
-      text-transform: uppercase;
-      font-size: 13px;
-      letter-spacing: 1px;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .modal-table-container td {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
       color: var(--text-color);
+      padding: 15px;
+      font-family: inherit;
+      font-size: 16px;
+      resize: none;
+      outline: none;
     }
 
-    .modal-table-container tr:hover td {
-      background: rgba(64, 47, 181, 0.1);
+    .home-textarea:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 10px rgba(207, 48, 170, 0.2);
     }
 
-    .modal-table-container tr.category-row td {
-      background: var(--primary-color);
-      color: white;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .modal-import-section {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-
-    .modal-file-info {
-      color: var(--secondary-color);
-      font-size: 14px;
-    }
-
+    /* Inventory Styles */
     .inventory-sections-container {
       display: grid;
       grid-template-columns: 50% 50%;
@@ -736,14 +257,6 @@
       color: var(--secondary-color);
     }
 
-    .stock-info {
-      text-align: center;
-      font-size: 0.9em;
-      color: var(--accent-color);
-      margin-top: -10px;
-      margin-bottom: 15px;
-    }
-
     .inventory-filters {
       display: flex;
       flex-wrap: wrap;
@@ -762,270 +275,248 @@
       font-size: 14px;
     }
 
-    .inventory-filters input::placeholder {
-      color: var(--accent-color);
-    }
-
     .inventory-filters input:focus {
       outline: none;
       border-color: var(--primary-color);
-      box-shadow: 0 0 10px rgba(207, 48, 170, 0.3);
     }
 
-    .import-btn {
-      padding: 10px 20px;
-      border: 1px solid var(--primary-color);
-      background: transparent;
-      color: var(--primary-color);
-      cursor: pointer;
-      border-radius: 5px;
-      font-weight: 500;
-      transition: all 0.2s;
-    }
-
-    .import-btn:hover {
-      background: var(--primary-color);
-      color: var(--bg-color);
-    }
-
-    .table-section {
-      margin-top: 30px;
-    }
-
-    /* Quotation Calculator Styles */
-    .calc-container {
-      padding: 20px;
+    .global-filters {
       display: flex;
-      flex-direction: column;
-      gap: 20px;
-      max-width: 800px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    .calc-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    .calc-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .calc-group label {
-      font-weight: 600;
-      color: var(--secondary-color);
-      font-size: 14px;
-      text-transform: uppercase;
-    }
-
-    .calc-group input, .calc-group select {
-      padding: 12px;
+      gap: 15px;
+      margin-bottom: 20px;
+      padding: 15px;
+      background: var(--card-bg);
+      border-radius: 12px;
       border: 1px solid var(--border-color);
-      border-radius: 8px;
+      justify-content: center;
+    }
+
+    .global-filters input {
+      padding: 10px;
+      border: 1px solid var(--border-color);
+      border-radius: 5px;
       background: var(--input-bg);
       color: var(--text-color);
-      font-size: 16px;
-      transition: border-color 0.2s;
-    }
-
-    .calc-group input:focus, .calc-group select:focus {
-      outline: none;
-      border-color: var(--primary-color);
-      box-shadow: 0 0 10px rgba(207, 48, 170, 0.2);
-    }
-
-    .terms-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-      gap: 10px;
-      background: rgba(255, 255, 255, 0.03);
-      padding: 15px;
-      border-radius: 8px;
-      border: 1px solid var(--border-color);
-    }
-
-    .term-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
       font-size: 14px;
-      padding: 8px;
-      border-radius: 4px;
-      transition: background 0.2s;
+      width: 250px;
     }
 
-    .term-item:hover:not(.disabled) {
-      background: rgba(207, 48, 170, 0.1);
-    }
-
-    .term-item.disabled {
-      opacity: 0.3;
-      cursor: not-allowed;
-    }
-
-    .calc-results {
-      background: rgba(207, 48, 170, 0.05);
-      border-left: 4px solid var(--primary-color);
-      padding: 20px;
-      border-radius: 8px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .result-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .result-label {
-      color: var(--secondary-color);
-      font-size: 14px;
-    }
-
-    .result-value {
-      font-weight: 700;
-      font-size: 18px;
-      color: var(--text-color);
-    }
-
-    .result-value.highlight {
-      color: var(--primary-color);
-      font-size: 24px;
-    }
-
-    .quote-header-info {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-
-    /* New Quotation Layout Styles */
-    .quote-layout {
-      display: flex;
-      flex-direction: row;
-      gap: 20px;
-      padding: 10px;
-      align-items: flex-start;
-    }
-
-    .quote-left-panel {
-      width: 30%;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .quote-right-panel {
-      width: 70%;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .items-list-area {
-      width: 100%;
-      height: 200px;
-      padding: 15px;
-      border: 1px solid var(--border-color);
+    /* Common Table Styles */
+    .table-container {
+      overflow-x: auto;
       border-radius: 12px;
-      background: rgba(255, 255, 255, 0.02);
-      color: var(--text-color);
-      font-family: inherit;
-      font-size: 16px;
-      resize: vertical;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    .items-list-area:focus {
-      border-color: var(--primary-color);
-      box-shadow: 0 0 10px rgba(207, 48, 170, 0.2);
-    }
-
-    .quote-summary-bar {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
       background: var(--card-bg);
       border: 1px solid var(--border-color);
-      padding: 20px;
-      border-radius: 12px;
+      max-height: 60vh;
+      overflow-y: auto;
     }
 
-    .summary-item {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
     }
 
-    .summary-label {
-      font-size: 12px;
+    th, td {
+      padding: 15px 20px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    th {
+      background: var(--card-bg);
       color: var(--secondary-color);
+      font-weight: 600;
       text-transform: uppercase;
+      font-size: 14px;
       letter-spacing: 1px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
 
-    .summary-value {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-color);
+    tr:hover td {
+      background: rgba(64, 47, 181, 0.1);
     }
 
-    .summary-value.highlight {
+    .clickable-cell {
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .clickable-cell:hover {
       color: var(--primary-color);
     }
 
-    .settings-panel {
-      display: none;
-      background: var(--bg-color);
+    .no-data {
+      text-align: center;
+      padding: 60px;
+      color: var(--accent-color);
+    }
+
+    /* RAM/SSD Page */
+    .ramssd-page-content {
+      background: var(--card-bg);
       border: 1px solid var(--border-color);
-      padding: 20px;
       border-radius: 12px;
-      margin-top: 10px;
-      animation: slideDown 0.3s ease-out;
+      padding: 25px;
     }
 
-    @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* Quotation Page */
+    .quotation-page-content {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 25px;
     }
 
-    .settings-panel.active {
-      display: block;
+    /* Notes Page */
+    .notes-page-content {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 25px;
+      height: calc(100vh - 160px);
+      display: flex;
+      flex-direction: column;
     }
 
-    .cogwheel-btn {
-      background: transparent;
-      border: none;
-      color: var(--secondary-color);
-      cursor: pointer;
-      padding: 5px;
+    /* Reuse existing modal styles for page elements */
+    .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid var(--primary-color); }
+    .modal-header h2 { margin: 0; color: var(--secondary-color); font-size: 1.5rem; }
+    .modal-import-section { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+    .modal-file-info { color: var(--secondary-color); font-size: 14px; }
+    .modal-filters { display: flex; gap: 15px; margin-bottom: 20px; flex-wrap: wrap; }
+    .modal-filters input { flex: 1; min-width: 180px; padding: 10px; border: 1px solid var(--border-color); border-radius: 5px; background: var(--input-bg); color: var(--text-color); font-size: 14px; }
+    .modal-table-container { flex: 1; overflow: auto; border-radius: 12px; border: 1px solid var(--border-color); background: var(--bg-color); }
+    .import-btn { padding: 10px 20px; border: 1px solid var(--primary-color); background: transparent; color: var(--primary-color); cursor: pointer; border-radius: 5px; font-weight: 500; display: flex; align-items: center; }
+    .import-btn:hover { background: var(--primary-color); color: var(--bg-color); }
+    .upload-btn-wrapper { position: relative; overflow: hidden; display: inline-block; }
+    .upload-btn-wrapper input[type=file] { position: absolute; left: 0; top: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+    
+    .quote-layout { display: flex; gap: 20px; }
+    .quote-left-panel { width: 30%; display: flex; flex-direction: column; gap: 20px; }
+    .quote-right-panel { width: 70%; display: flex; flex-direction: column; gap: 20px; }
+    .quote-summary-bar { background: var(--card-bg); border: 1px solid var(--border-color); padding: 20px; border-radius: 12px; display: flex; flex-direction: column; gap: 12px; }
+    .summary-item { display: flex; flex-direction: column; gap: 5px; }
+    .summary-label { font-size: 12px; color: var(--secondary-color); text-transform: uppercase; }
+    .summary-value { font-size: 18px; font-weight: 700; }
+    .summary-value.highlight { color: var(--primary-color); }
+    .items-list-area { width: 100%; flex: 1; padding: 15px; border: 1px solid var(--border-color); border-radius: 12px; background: rgba(255, 255, 255, 0.02); color: var(--text-color); font-family: inherit; font-size: 16px; resize: none; outline: none; }
+    .settings-panel { display: none; background: var(--bg-color); border: 1px solid var(--border-color); padding: 20px; border-radius: 12px; margin-top: 10px; }
+    .settings-panel.active { display: block; }
+    .calc-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 15px; }
+    .calc-group label { font-size: 12px; color: var(--secondary-color); text-transform: uppercase; }
+    .calc-group input, .calc-group select { padding: 10px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--input-bg); color: var(--text-color); }
+    .terms-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; background: rgba(255, 255, 255, 0.03); padding: 15px; border-radius: 8px; }
+    .term-item { display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 14px; }
+    .calc-results { background: rgba(207, 48, 170, 0.05); border-left: 4px solid var(--primary-color); padding: 20px; border-radius: 8px; display: flex; flex-direction: column; gap: 15px; }
+    .result-item { display: flex; justify-content: space-between; }
+    
+    .notes-layout { display: flex; gap: 20px; flex: 1; overflow: hidden; }
+    .notes-left-panel { flex: 1; display: flex; flex-direction: column; gap: 15px; }
+    .notes-right-panel { flex: 1; display: flex; flex-direction: column; gap: 15px; }
+    .notes-table-container { flex: 1; overflow: auto; border: 1px solid var(--border-color); border-radius: 12px; }
+    .status-checkboxes { display: flex; gap: 8px; align-items: center; font-size: 11px; }
+    .notes-calendar-container { display: flex; align-items: center; gap: 10px; background: var(--card-bg); padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); }
+    
+    .cogwheel-btn { background: transparent; border: none; color: var(--secondary-color); cursor: pointer; display: flex; align-items: center; transition: transform 0.5s; }
+    .cogwheel-btn:hover { color: var(--primary-color); transform: rotate(90deg); }
+    .delete-btn { background: var(--accent-color); color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 11px; }
+
+    .pyramid-loader { position: relative; width: 40px; height: 40px; display: block; transform-style: preserve-3d; transform: rotateX(-20deg); }
+    .pyramid-loader .wrapper { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; animation: spin 4s linear infinite; }
+    @keyframes spin { 100% { transform: rotateY(360deg); } }
+    .pyramid-loader .wrapper .side { width: 20px; height: 20px; position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto; transform-origin: center top; clip-path: polygon(50% 0%, 0% 100%, 100% 100%); }
+    .pyramid-loader .wrapper .side1 { transform: rotateZ(-30deg) rotateY(90deg); background: conic-gradient(#00FFFF, #00CED1, #20B2AA, #008B8B); }
+    .pyramid-loader .wrapper .side2 { transform: rotateZ(30deg) rotateY(90deg); background: conic-gradient(#008B8B, #20B2AA, #00CED1, #00FFFF); }
+    .pyramid-loader .wrapper .side3 { transform: rotateX(30deg); background: conic-gradient(#008B8B, #20B2AA, #00CED1, #00FFFF); }
+    .pyramid-loader .wrapper .side4 { transform: rotateX(-30deg); background: conic-gradient(#00FFFF, #00CED1, #20B2AA, #008B8B); }
+
+    .brand-animation { display: flex; align-items: center; gap: 12px; }
+
+    /* Login Overlay Styles */
+    #login-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: var(--bg-color);
+      z-index: 10000;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: color 0.2s, transform 0.5s;
     }
-
-    .cogwheel-btn:hover {
+    .login-card {
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .login-card h1 {
+      margin-bottom: 25px;
       color: var(--primary-color);
-      transform: rotate(90deg);
+      font-size: 1.8rem;
+      letter-spacing: 2px;
     }
-
-    .cogwheel-btn svg {
-      width: 24px;
-      height: 24px;
+    .login-card input {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      background: var(--input-bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-color);
+      border-radius: 8px;
+      font-size: 16px;
+      outline: none;
+    }
+    .login-card input:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 10px rgba(207, 48, 170, 0.2);
+    }
+    .login-card button {
+      width: 100%;
+      padding: 12px;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+      transition: opacity 0.2s;
+    }
+    .login-card button:hover {
+      opacity: 0.9;
+    }
+    .logout-btn {
+      padding: 6px 12px;
+      background: transparent;
+      border: 1px solid var(--accent-color);
+      color: var(--accent-color);
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .logout-btn:hover {
+      background: var(--accent-color);
+      color: white;
     }
   </style>
 </head>
 <body>
+  <div id="login-overlay">
+    <div class="login-card">
+      <h1>SEEKR ACCESS</h1>
+      <input type="password" id="login-pass" placeholder="Enter Security Password...">
+      <button id="login-btn">UNLOCK SYSTEM</button>
+    </div>
+  </div>
+
   <div class="grid"></div>
   
   <nav class="navbar">
@@ -1036,946 +527,549 @@
           <span class="side side2"></span>
           <span class="side side3"></span>
           <span class="side side4"></span>
-          <span class="shadow"></span>
         </div>
       </div>
-      <a href="#" class="navbar-brand">SEEKR by EMS</a>
+      <a href="#" class="navbar-brand" onclick="switchPage('home')">SEEKR by EMS</a>
     </div>
-    <div class="navbar-search">
-      <input type="text" id="nav-item-code-filter" placeholder="Filter by Item Code...">
-      <input type="text" id="nav-desc-filter-1" placeholder="Filter by Description 1...">
-      <input type="text" id="nav-desc-filter-2" placeholder="Filter by Description 2...">
+
+    <div class="nav-buttons">
+      <button class="nav-btn active" onclick="switchPage('home')">HOME</button>
+      <button class="nav-btn" onclick="switchPage('inventory')">INVENTORY</button>
+      <button class="nav-btn" onclick="switchPage('ramssd')">RAM/SSD</button>
+      <button class="nav-btn" onclick="switchPage('quotation')">QUOTATION</button>
+      <button class="nav-btn" onclick="switchPage('notes')">NOTES</button>
     </div>
-    <button class="nav-ramssd-btn" id="openRamSsdModal">RAM/SSD</button>
-    <button class="nav-ramssd-btn" id="openQuotationModal">QUOTATION</button>
-    <button class="nav-ramssd-btn" id="openNotesModal">NOTES</button>
+
     <div class="navbar-datetime" id="navbar-datetime"></div>
-    <div class="theme-switcher">
-      <select id="theme-select">
-        <option value="sunset" selected>Sunset</option>
-        <option value="dark">Dark</option>
-        <option value="light">Light</option>
-        <option value="ocean">Ocean</option>
-        <option value="forest">Forest</option>
-        <option value="midnight">Midnight</option>
-      </select>
+
+    <div style="display: flex; align-items: center; gap: 20px;">
+      <div id="cloud-status" style="font-size: 12px; color: var(--secondary-color); display: flex; align-items: center; gap: 5px;">
+        <span style="width: 8px; height: 8px; border-radius: 50%; background: #28a745;"></span> Cloud Sync Active
+      </div>
+
+      <button class="logout-btn" id="logout-btn">LOGOUT</button>
+
+      <div class="theme-switcher">
+        <select id="theme-select">
+          <option value="sunset" selected>Sunset</option>
+          <option value="dark">Dark</option>
+          <option value="light">Light</option>
+          <option value="ocean">Ocean</option>
+          <option value="forest">Forest</option>
+          <option value="midnight">Midnight</option>
+        </select>
+      </div>
     </div>
   </nav>
   
   <div class="container">
-    <div class="inventory-sections-container">
-      <div class="inventory-section">
-        <h2>BRANCH STOCK</h2>
-        <p class="stock-info" id="branch-file-info">No file loaded</p>
-        <div class="inventory-filters">
-          <input type="text" id="item-code-filter" placeholder="Filter by Item Code...">
-          <input type="text" id="desc-filter-1" placeholder="Filter by Description (1)...">
-          <input type="text" id="desc-filter-2" placeholder="Filter by Description (2)...">
+    <!-- HOME PAGE -->
+    <div id="page-home" class="page active">
+      <div class="home-layout">
+        <div class="home-panel">
+          <h2>TODOs</h2>
+          <textarea class="home-textarea" id="home-todos" placeholder="Write your tasks here..."></textarea>
         </div>
-        <div class="inventory-filters">
-          <div class="upload-btn-wrapper">
-            <button class="import-btn">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                <polyline points="17 8 12 3 7 8"/>
-                <line x1="12" y1="3" x2="12" y2="15"/>
-              </svg>
-              IMPORT
-            </button>
-            <input type="file" id="fileInput" accept=".xls,.xlsx" />
-          </div>
+        <div class="home-panel">
+          <h2>PROMOTIONS</h2>
+          <textarea class="home-textarea" id="home-promotions" placeholder="Write active promotions here..."></textarea>
         </div>
-        <div class="table-container" id="tableContainer">
-          <table>
-            <thead>
-              <tr>
-                <th>ITEM CODE</th>
-                <th>DESCRIPTION</th>
-                <th>QTY</th>
-              </tr>
-            </thead>
-            <tbody id="stock-table-body">
-              <tr>
-                <td colspan="3" class="no-data">Upload an XLS file to view contents</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="home-panel">
+          <h2>SCHEDULES</h2>
+          <textarea class="home-textarea" id="home-schedules" placeholder="Write your schedules here..."></textarea>
         </div>
       </div>
+    </div>
 
-      <div class="inventory-section">
-        <h2>WHS STOCK</h2>
-        <p class="stock-info" id="whs-file-info">No file loaded</p>
-        <div class="inventory-filters">
-          <input type="text" id="whs-item-code-filter" placeholder="Filter by Item Code...">
-          <input type="text" id="whs-desc-filter-1" placeholder="Filter by Description (1)...">
-          <input type="text" id="whs-desc-filter-2" placeholder="Filter by Description (2)...">
-        </div>
-        <div class="inventory-filters">
-          <div class="upload-btn-wrapper">
-            <button class="import-btn">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                <polyline points="17 8 12 3 7 8"/>
-                <line x1="12" y1="3" x2="12" y2="15"/>
-              </svg>
-              IMPORT
-            </button>
-            <input type="file" id="whs-fileInput" accept=".xls,.xlsx" />
+    <!-- INVENTORY PAGE -->
+    <div id="page-inventory" class="page">
+      <div class="global-filters">
+        <input type="text" id="nav-item-code-filter" placeholder="Filter by Item Code (Both)...">
+        <input type="text" id="nav-desc-filter-1" placeholder="Filter by Description 1 (Both)...">
+        <input type="text" id="nav-desc-filter-2" placeholder="Filter by Description 2 (Both)...">
+      </div>
+      <div class="inventory-sections-container">
+        <div class="inventory-section">
+          <h2>BRANCH STOCK</h2>
+          <p class="stock-info" id="branch-file-info">No file loaded</p>
+          <div class="inventory-filters">
+            <input type="text" id="item-code-filter" placeholder="Code...">
+            <input type="text" id="desc-filter-1" placeholder="Desc 1...">
+            <input type="text" id="desc-filter-2" placeholder="Desc 2...">
+          </div>
+          <div class="inventory-filters">
+            <div class="upload-btn-wrapper">
+              <button class="import-btn">IMPORT XLS</button>
+              <input type="file" id="fileInput" accept=".xls,.xlsx" />
+            </div>
+          </div>
+          <div class="table-container">
+            <table>
+              <thead><tr><th>ITEM CODE</th><th>DESCRIPTION</th><th>QTY</th></tr></thead>
+              <tbody id="stock-table-body"><tr><td colspan="3" class="no-data">Upload an XLS file</td></tr></tbody>
+            </table>
           </div>
         </div>
-        <div class="table-container" id="whs-tableContainer">
+
+        <div class="inventory-section">
+          <h2>WHS STOCK</h2>
+          <p class="stock-info" id="whs-file-info">No file loaded</p>
+          <div class="inventory-filters">
+            <input type="text" id="whs-item-code-filter" placeholder="Code...">
+            <input type="text" id="whs-desc-filter-1" placeholder="Desc 1...">
+            <input type="text" id="whs-desc-filter-2" placeholder="Desc 2...">
+          </div>
+          <div class="inventory-filters">
+            <div class="upload-btn-wrapper">
+              <button class="import-btn">IMPORT XLS</button>
+              <input type="file" id="whs-fileInput" accept=".xls,.xlsx" />
+            </div>
+          </div>
+          <div class="table-container">
+            <table>
+              <thead><tr><th>ITEM CODE</th><th>DESCRIPTION</th><th>QTY</th></tr></thead>
+              <tbody id="whs-stock-table-body"><tr><td colspan="3" class="no-data">Upload an XLS file</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RAM/SSD PAGE -->
+    <div id="page-ramssd" class="page">
+      <div class="ramssd-page-content">
+        <div class="modal-header">
+          <h2>RAM/SSD PRICING</h2>
+        </div>
+        <div class="modal-import-section">
+          <div class="upload-btn-wrapper">
+            <button class="import-btn">IMPORT CSV</button>
+            <input type="file" id="ramssd-fileInput" accept=".csv" />
+          </div>
+          <span class="modal-file-info" id="ramssd-file-info">No file loaded</span>
+        </div>
+        <div class="modal-filters">
+          <input type="text" id="ramssd-item-code-filter" placeholder="Code...">
+          <input type="text" id="ramssd-desc-filter-1" placeholder="Desc 1...">
+          <input type="text" id="ramssd-desc-filter-2" placeholder="Desc 2...">
+          <input type="text" id="ramssd-desc-filter-3" placeholder="Desc 3...">
+        </div>
+        <div class="modal-table-container">
           <table>
-            <thead>
-              <tr>
-                <th>ITEM CODE</th>
-                <th>DESCRIPTION</th>
-                <th>QTY</th>
-              </tr>
-            </thead>
-            <tbody id="whs-stock-table-body">
-              <tr>
-                <td colspan="3" class="no-data">Upload an XLS file to view contents</td>
-              </tr>
-            </tbody>
+            <thead><tr><th>ITEM CODE</th><th>DESCRIPTION</th><th>COST</th><th>MEMORY ALONE</th><th>BUNDLE</th></tr></thead>
+            <tbody id="ramssd-table-body"><tr><td colspan="5" class="no-data">Upload a CSV file</td></tr></tbody>
           </table>
         </div>
       </div>
     </div>
-  </div>
 
-  <div id="ramSsdModal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>RAM/SSD PRICING as of APRIL 01,2026</h2>
-        <span class="modal-close" id="closeRamSsdModal">&times;</span>
-      </div>
-      <div class="modal-import-section">
-        <div class="upload-btn-wrapper">
-          <button class="import-btn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="17 8 12 3 7 8"/>
-              <line x1="12" y1="3" x2="12" y2="15"/>
-            </svg>
-            IMPORT CSV
-          </button>
-          <input type="file" id="ramssd-fileInput" accept=".csv" />
+    <!-- QUOTATION PAGE -->
+    <div id="page-quotation" class="page">
+      <div class="quotation-page-content">
+        <div class="modal-header">
+          <div style="display: flex; align-items: center; gap: 15px;">
+            <h2>QUOTATION ENGINE</h2>
+            <button class="cogwheel-btn" id="toggleQuoteSettings">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </button>
+          </div>
         </div>
-        <span class="modal-file-info" id="ramssd-file-info">No file loaded</span>
-      </div>
-      <div class="modal-filters">
-        <input type="text" id="ramssd-item-code-filter" placeholder="Filter by Item Code...">
-        <input type="text" id="ramssd-desc-filter-1" placeholder="Filter by Description (1)...">
-        <input type="text" id="ramssd-desc-filter-2" placeholder="Filter by Description (2)...">
-        <input type="text" id="ramssd-desc-filter-3" placeholder="Filter by Description (3)...">
-      </div>
-      <div class="modal-table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>ITEM CODE</th>
-              <th>DESCRIPTION</th>
-              <th>COST</th>
-              <th>MEMORY ALONE</th>
-              <th>BUNDLE</th>
-            </tr>
-          </thead>
-          <tbody id="ramssd-table-body">
-            <tr>
-              <td colspan="5" class="no-data">Upload a CSV file to view contents</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <div id="quotationModal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <div style="display: flex; align-items: center; gap: 15px;">
-          <h2>QUOTATION ENGINE</h2>
-          <button class="cogwheel-btn" id="toggleQuoteSettings" title="Calculator Settings">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="3"/>
-              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-            </svg>
-          </button>
-        </div>
-        <span class="modal-close" id="closeQuotationModal">&times;</span>
-      </div>
-      <div class="modal-table-container">
         <div class="quote-layout">
           <div class="quote-left-panel">
             <div class="quote-summary-bar">
-              <div class="summary-item">
-                <span class="summary-label">Standard Price (SRP)</span>
-                <span class="summary-value" id="summary-srp">₱0.00</span>
-              </div>
-              <div class="summary-item">
-                <span class="summary-label">Cash Discount Price</span>
-                <span class="summary-value" id="summary-cash">₱0.00</span>
-              </div>
-              <div class="summary-item">
-                <span class="summary-label" style="font-size: 14px;">✨ You Save: <span id="summary-save">₱0.00</span></span>
-                <span class="summary-value" style="font-size: 12px; color: var(--secondary-color);">When you pay via Cash or Bank Transfer.</span>
-              </div>
-              <div class="summary-item" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border-color);">
-                <span class="summary-label" style="font-size: 14px; letter-spacing: 0.5px;">Financing Estimates</span>
-                <div style="display: flex; flex-direction: column; gap: 6px; margin-top: 6px;">
-                  <div style="display: flex; justify-content: space-between;">
-                    <span class="summary-label">Bank:</span>
-                    <span class="summary-value" id="summary-bank" style="font-size: 14px;">None</span>
-                  </div>
-                  <div style="display: flex; justify-content: space-between;">
-                    <span class="summary-label">Term:</span>
-                    <span class="summary-value" id="summary-term" style="font-size: 14px;">None</span>
-                  </div>
-                  <div style="display: flex; justify-content: space-between;">
-                    <span class="summary-label">Monthly:</span>
-                    <span class="summary-value highlight" id="summary-monthly" style="font-size: 14px;">₱0.00 / mo</span>
-                  </div>
-                  <div style="display: flex; justify-content: space-between;">
-                    <span class="summary-label">Total Cost:</span>
-                    <span class="summary-value highlight" id="summary-total" style="font-size: 16px;">₱0.00</span>
-                  </div>
+              <div class="summary-item"><span class="summary-label">Standard Price (SRP)</span><span class="summary-value" id="summary-srp">₱0.00</span></div>
+              <div class="summary-item"><span class="summary-label">Cash Discount Price</span><span class="summary-value" id="summary-cash">₱0.00</span></div>
+              <div class="summary-item"><span class="summary-label">✨ You Save: <span id="summary-save">₱0.00</span></span></div>
+              <div class="summary-item" style="border-top:1px solid var(--border-color); padding-top:10px;">
+                <span class="summary-label">Financing Estimates</span>
+                <div style="display:flex; flex-direction:column; gap:6px; margin-top:6px;">
+                  <div style="display:flex;justify-content:space-between;"><span class="summary-label">Bank:</span><span class="summary-value" id="summary-bank" style="font-size:14px;">None</span></div>
+                  <div style="display:flex;justify-content:space-between;"><span class="summary-label">Term:</span><span class="summary-value" id="summary-term" style="font-size:14px;">None</span></div>
+                  <div style="display:flex;justify-content:space-between;"><span class="summary-label">Monthly:</span><span class="summary-value highlight" id="summary-monthly" style="font-size:14px;">₱0.00 / mo</span></div>
+                  <div style="display:flex;justify-content:space-between;"><span class="summary-label">Total:</span><span class="summary-value highlight" id="summary-total" style="font-size:16px;">₱0.00</span></div>
                 </div>
               </div>
-              <div class="summary-item" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border-color);">
-                <span class="modal-subtitle" style="font-size: 13px; line-height: 1.5; text-transform: none; letter-spacing: normal;">
-                  *PRICE MAY CHANGE WITHOUT PRIOR NOTICE*<br>
-                  Quote Date: <span id="quote-date"></span><br>
-                  Quotation Validity: 2 days only<br>
-                  EMS @ PCWORX SM FAIRVIEW
-                </span>
+              <div class="summary-item" style="border-top:1px solid var(--border-color); padding-top:10px;">
+                <span style="font-size:11px; opacity:0.7;">*PRICE MAY CHANGE WITHOUT PRIOR NOTICE*<br>Quote Date: <span id="quote-date"></span><br>Validity: 2 days | EMS @ PCWORX</span>
               </div>
             </div>
-
             <div class="settings-panel" id="quoteSettingsPanel">
-              <div class="calc-container" style="padding: 0;">
-                <div class="quote-header-info">
-                  <div class="upload-btn-wrapper">
-                    <button class="import-btn">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                        <polyline points="17 8 12 3 7 8"/>
-                        <line x1="12" y1="3" x2="12" y2="15"/>
-                      </svg>
-                      IMPORT RATES (CSV)
-                    </button>
-                    <input type="file" id="quote-csv-file" accept=".csv" />
-                  </div>
-                  <span class="modal-file-info" id="quote-file-info">No rates loaded</span>
-                </div>
-
-                <div class="calc-group">
-                  <label for="item-cost">Item Cost (Capital)</label>
-                  <input type="number" id="item-cost" placeholder="0.00" value="0">
-                </div>
-                <div class="calc-group">
-                  <label>Suggested SRP (Cost + 20%)</label>
-                  <input type="text" id="base-srp-display" placeholder="₱0.00" value="₱0.00">
-                </div>
-
-                <div class="calc-group" style="margin-top: 10px;">
-                  <label for="cash-transfer-value">CASH/BANK TRANSFER</label>
-                  <input type="text" id="cash-transfer-value" placeholder="Enter cash price or details...">
-                </div>
-
-                <div class="calc-group">
-                  <label for="quote-bank-select">Select Bank / Payment Method</label>
-                  <select id="quote-bank-select">
-                    <option value="">-- Upload CSV first --</option>
-                  </select>
-                </div>
-
-                <div class="calc-group">
-                  <label>Select Repayment Term</label>
-                  <div class="terms-grid" id="quote-terms-container">
-                    <!-- Terms will be populated here -->
-                  </div>
-                </div>
-
-                <div class="calc-results" style="margin-top: 15px;">
-                <div class="result-item">
-                  <span class="result-label">TWAS (0.5%):</span>
-                  <span class="result-value" id="quote-twas-display">₱0.00</span>
-                </div>
-                <div class="result-item">
-                  <span class="result-label">Bank MDR Rate:</span>
-                  <span class="result-value" id="quote-rate-display">0.00%</span>
-                </div>
-                <div class="result-item">
-                  <span class="result-label">Final Terminal Price:</span>
-                  <span class="result-value highlight" id="quote-swipe-display">₱0.00</span>
-                </div>
-                </div>
+              <div class="calc-group"><div class="upload-btn-wrapper"><button class="import-btn">IMPORT RATES (CSV)</button><input type="file" id="quote-csv-file" accept=".csv" /></div><span id="quote-file-info" style="font-size:12px;">No rates loaded</span></div>
+              <div class="calc-group"><label>Item Cost</label><input type="number" id="item-cost" value="0"></div>
+              <div class="calc-group"><label>SRP Display</label><input type="text" id="base-srp-display" readonly></div>
+              <div class="calc-group"><label>CASH/BANK PRICE</label><input type="text" id="cash-transfer-value"></div>
+              <div class="calc-group"><label>Bank</label><select id="quote-bank-select"><option value="">-- Upload CSV --</option></select></div>
+              <div class="calc-group"><label>Term</label><div class="terms-grid" id="quote-terms-container"></div></div>
+              <div class="calc-results">
+                <div class="result-item"><span class="result-label">TWAS (0.5%)</span><span class="result-value" id="quote-twas-display">₱0.00</span></div>
+                <div class="result-item"><span class="result-label">Rate</span><span class="result-value" id="quote-rate-display">0.00%</span></div>
+                <div class="result-item"><span class="result-label">Total Swiped</span><span class="result-value highlight" id="quote-swipe-display">₱0.00</span></div>
               </div>
             </div>
           </div>
-
           <div class="quote-right-panel">
-            <textarea class="items-list-area" placeholder="List items here (e.g., 1x Laptop, 2x Mouse)..."></textarea>
+            <textarea class="items-list-area" placeholder="List items here..."></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NOTES PAGE -->
+    <div id="page-notes" class="page">
+      <div class="notes-page-content">
+        <div class="modal-header">
+          <h2>NOTES</h2>
+          <div class="sync-controls" style="display:flex;gap:10px;">
+          </div>
+        </div>
+        <div class="notes-layout">
+          <div class="notes-left-panel">
+            <div class="notes-section-header">
+              <h3>CLIENT LIST</h3>
+              <button class="nav-btn" id="addClientBtn" style="font-size:12px;margin-left:auto;">+ Add</button>
+            </div>
+            <div class="notes-table-container">
+              <table>
+                <thead><tr><th>DATE</th><th>NAME</th><th>INQUIRY</th><th>STATUS</th><th>DEL</th></tr></thead>
+                <tbody id="client-table-body"><tr><td colspan="5" class="no-data">No clients</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="notes-right-panel">
+            <div class="notes-section-header"><h3>INQUIRED ITEMS</h3></div>
+            <div class="notes-calendar-container"><label>SELECT DATE:</label><input type="date" id="notes-datepicker" class="notes-calendar-input"></div>
+            <textarea class="items-list-area" id="inquired-items-content" placeholder="Enter items here..."></textarea>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div id="notesModal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>NOTES</h2>
-        <span class="modal-close" id="closeNotesModal">&times;</span>
-      </div>
-      <div class="modal-table-container">
-        <p style="padding: 20px;">NOTES CONTENT COMING SOON</p>
-      </div>
-    </div>
-  </div>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getFirestore, doc, setDoc, getDoc, onSnapshot, collection, addDoc, deleteDoc, updateDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+    import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDjFz06TAcohFTn_W3uGaGbu-Z7n4jO-wA",
+      authDomain: "seekr-81b46.firebaseapp.com",
+      projectId: "seekr-81b46",
+      storageBucket: "seekr-81b46.firebasestorage.app",
+      messagingSenderId: "167052247920",
+      appId: "1:167052247920:web:869985f4f4d5a7998ec5b5",
+      measurementId: "G-M34GH7HCV6"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+
+    const loginOverlay = document.getElementById('login-overlay');
+    const loginPass = document.getElementById('login-pass');
+    const loginBtn = document.getElementById('login-btn');
+    const logoutBtn = document.getElementById('logout-btn');
+
+    const FAKE_EMAIL = "ems@fake.email";
+
+    async function handleLogin() {
+      const password = loginPass.value;
+      if (!password) return;
+      try {
+        await signInWithEmailAndPassword(auth, FAKE_EMAIL, password);
+      } catch (err) {
+        alert("System Locked: " + err.message);
+      }
+    }
+
+    loginBtn.addEventListener('click', handleLogin);
+    loginPass.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleLogin(); });
+    logoutBtn.addEventListener('click', () => signOut(auth));
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        loginOverlay.style.display = 'none';
+        loginPass.value = '';
+      } else {
+        loginOverlay.style.display = 'flex';
+      }
+    });
+
+    window.switchPage = function(pageId) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page-' + pageId).classList.add('active');
+      
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(b => {
+        if (b.textContent.toLowerCase() === pageId.toLowerCase()) b.classList.add('active');
+      });
+
+      if (pageId === 'quotation') {
+        const now = new Date();
+        document.getElementById('quote-date').textContent = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: '2-digit' });
+      }
+    };
+
     document.addEventListener('DOMContentLoaded', function() {
-    
-    if (typeof XLSX === 'undefined') {
-      console.log('Warning: XLSX library not loaded');
-    }
+      // FIREBASE SYNC FOR HOME PANELS
+      ['todos', 'promotions', 'schedules'].forEach(id => {
+        const el = document.getElementById('home-' + id);
+        const docRef = doc(db, "workspace", id);
 
-    let stockData = [];
-    let whsData = [];
-
-    const fileInput = document.getElementById('fileInput');
-    const whsFileInput = document.getElementById('whs-fileInput');
-    const stockTableBody = document.getElementById('stock-table-body');
-    const whsStockTableBody = document.getElementById('whs-stock-table-body');
-    const branchFileInfo = document.getElementById('branch-file-info');
-    const whsFileInfo = document.getElementById('whs-file-info');
-    const ramSsdModal = document.getElementById('ramSsdModal');
-    const openRamSsdModalBtn = document.getElementById('openRamSsdModal');
-    const closeRamSsdModalBtn = document.getElementById('closeRamSsdModal');
-    const ramssdFileInput = document.getElementById('ramssd-fileInput');
-    const ramssdTableBody = document.getElementById('ramssd-table-body');
-    const ramssdFileInfo = document.getElementById('ramssd-file-info');
-    const quotationModal = document.getElementById('quotationModal');
-    const openQuotationModalBtn = document.getElementById('openQuotationModal');
-    const closeQuotationModalBtn = document.getElementById('closeQuotationModal');
-    const notesModal = document.getElementById('notesModal');
-    const openNotesModalBtn = document.getElementById('openNotesModal');
-    const closeNotesModalBtn = document.getElementById('closeNotesModal');
-
-    fileInput.addEventListener('change', (e) => handleFile(e, 'branch'));
-    whsFileInput.addEventListener('change', (e) => handleFile(e, 'whs'));
-
-    function handleFile(e, type) {
-      const file = e.target.files[0];
-      if (!file) return;
-
-      const reader = new FileReader();
-
-      reader.onload = function(e) {
-        try {
-          let workbook;
-          if (file.name.toLowerCase().endsWith('.xls') && !file.name.toLowerCase().endsWith('.xlsx')) {
-            const binaryString = Array.from(new Uint8Array(e.target.result)).map(b => String.fromCharCode(b)).join('');
-            workbook = XLSX.read(binaryString, { type: 'binary', cellDates: true });
-          } else {
-            workbook = XLSX.read(new Uint8Array(e.target.result), { type: 'array', cellDates: true });
+        onSnapshot(docRef, (docSnap) => {
+          if (docSnap.exists() && document.activeElement !== el) {
+            el.value = docSnap.data().content;
           }
+        });
 
-          if (!workbook.SheetNames || workbook.SheetNames.length === 0) {
-            alert('No sheets found in workbook');
-            return;
-          }
+        let saveTimeout;
+        el.addEventListener('input', () => {
+          clearTimeout(saveTimeout);
+          saveTimeout = setTimeout(async () => {
+            await setDoc(docRef, { content: el.value });
+          }, 1000);
+        });
+      });
 
-          const worksheet = workbook.Sheets[workbook.SheetNames[0]];
-          if (!worksheet) {
-            alert('Could not read sheet');
-            return;
-          }
+      // THEME
+      const themeSelect = document.getElementById('theme-select');
+      themeSelect.addEventListener('change', () => document.documentElement.setAttribute('data-theme', themeSelect.value));
 
-          const branchName = worksheet['A1'] ? worksheet['A1'].v : '';
-          const dateTime = worksheet['A4'] ? worksheet['A4'].v : '';
+      // DATE TIME
+      function updateDateTime() {
+        const now = new Date();
+        const options = { weekday: 'short', year: 'numeric', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+        const el = document.getElementById('navbar-datetime');
+        if (el) el.textContent = now.toLocaleString('en-US', options);
+      }
+      setInterval(updateDateTime, 1000);
+      updateDateTime();
 
-          const items = [];
-          for (let row = 9; row <= 1000; row++) {
-            const itemCode = worksheet['A' + row] ? worksheet['A' + row].v : null;
-            const itemDesc = worksheet['B' + row] ? worksheet['B' + row].v : null;
-            const quantity = worksheet['E' + row] ? worksheet['E' + row].v : null;
+      // INVENTORY LOGIC
+      let stockData = [], whsData = [];
+      const fileInput = document.getElementById('fileInput'), whsFileInput = document.getElementById('whs-fileInput');
+      const stockTableBody = document.getElementById('stock-table-body'), whsStockTableBody = document.getElementById('whs-stock-table-body');
+      
+      fileInput?.addEventListener('change', (e) => handleFile(e, 'branch'));
+      whsFileInput?.addEventListener('change', (e) => handleFile(e, 'whs'));
 
-            if (itemCode === null && itemDesc === null && quantity === null) break;
-            if (itemCode || itemDesc || quantity) {
-              items.push({ itemCode, itemDesc, quantity });
+      function handleFile(e, type) {
+        const file = e.target.files[0]; if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          try {
+            let workbook;
+            if (file.name.toLowerCase().endsWith('.xls')) {
+              const binaryString = Array.from(new Uint8Array(e.target.result)).map(b => String.fromCharCode(b)).join('');
+              workbook = XLSX.read(binaryString, { type: 'binary', cellDates: true });
+            } else workbook = XLSX.read(new Uint8Array(e.target.result), { type: 'array', cellDates: true });
+            const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+            const dateTime = worksheet['A4'] ? worksheet['A4'].v : '';
+            const items = [];
+            for (let row = 9; row <= 1000; row++) {
+              const itemCode = worksheet['A' + row] ? worksheet['A' + row].v : null;
+              const itemDesc = worksheet['B' + row] ? worksheet['B' + row].v : null;
+              const quantity = worksheet['E' + row] ? worksheet['E' + row].v : null;
+              if (itemCode === null && itemDesc === null && quantity === null) break;
+              if (itemCode || itemDesc || quantity) items.push({ itemCode, itemDesc, quantity });
             }
-          }
-
-          if (type === 'branch') {
-            stockData = items;
-            branchFileInfo.textContent = `${file.name} - ${dateTime}`;
-            renderStockTable(stockData);
-          } else {
-            whsData = items;
-            whsFileInfo.textContent = `${file.name} - ${dateTime}`;
-            renderWHSStockTable(whsData);
-          }
-        } catch (err) {
-          console.error('Error parsing file:', err);
-          alert('Error parsing file: ' + err.message);
-        }
-      };
-
-      reader.readAsArrayBuffer(file);
-    }
-
-    function renderStockTable(data) {
-      if (!data || data.length === 0) {
-        stockTableBody.innerHTML = '<tr><td colspan="3" class="no-data">No data found</td></tr>';
-        return;
+            if (type === 'branch') { stockData = items; document.getElementById('branch-file-info').textContent = file.name + ' - ' + dateTime; renderStockTable(stockData, stockTableBody); }
+            else { whsData = items; document.getElementById('whs-file-info').textContent = file.name + ' - ' + dateTime; renderStockTable(whsData, whsStockTableBody); }
+          } catch (err) { alert('Error parsing file: ' + err.message); }
+        };
+        reader.readAsArrayBuffer(file);
       }
-      let html = '';
-      data.forEach(row => {
-        const itemCode = String(row.itemCode || '');
-        const itemDesc = String(row.itemDesc || '');
-        const quantity = escapeHtml(String(row.quantity || ''));
-        html += `<tr>
-          <td class="clickable-cell" data-copy="${escapeHtml(itemCode)}">${escapeHtml(itemCode)}</td>
-          <td class="clickable-cell" data-copy="${escapeHtml(itemDesc)}">${escapeHtml(itemDesc)}</td>
-          <td>${quantity}</td>
-        </tr>`;
-      });
-      stockTableBody.innerHTML = html;
-    }
 
-    function renderWHSStockTable(data) {
-      if (!data || data.length === 0) {
-        whsStockTableBody.innerHTML = '<tr><td colspan="3" class="no-data">No data found</td></tr>';
-        return;
+      function renderStockTable(data, tbody) {
+        if (!data || data.length === 0) { tbody.innerHTML = '<tr><td colspan="3" class="no-data">No data found</td></tr>'; return; }
+        tbody.innerHTML = data.map(row => `<tr><td class="clickable-cell" onclick="copyText('${row.itemCode}')">${escapeHtml(String(row.itemCode || ''))}</td><td class="clickable-cell" onclick="copyText('${row.itemDesc}')">${escapeHtml(String(row.itemDesc || ''))}</td><td>${escapeHtml(String(row.quantity || ''))}</td></tr>`).join('');
       }
-      let html = '';
-      data.forEach(row => {
-        const itemCode = String(row.itemCode || '');
-        const itemDesc = String(row.itemDesc || '');
-        const quantity = escapeHtml(String(row.quantity || ''));
-        html += `<tr>
-          <td class="clickable-cell" data-copy="${escapeHtml(itemCode)}">${escapeHtml(itemCode)}</td>
-          <td class="clickable-cell" data-copy="${escapeHtml(itemDesc)}">${escapeHtml(itemDesc)}</td>
-          <td>${quantity}</td>
-        </tr>`;
-      });
-      whsStockTableBody.innerHTML = html;
-    }
 
-    function copyToClipboard(text, element) {
-      const originalText = element.textContent;
-      navigator.clipboard.writeText(text).then(() => {
-        element.textContent = 'Copied!';
-        element.classList.add('copied');
-        setTimeout(() => {
-          element.textContent = originalText;
-          element.classList.remove('copied');
-        }, 500);
-      });
-    }
+      window.copyText = function(text) { navigator.clipboard.writeText(text).then(() => { const toast = document.createElement('div'); toast.textContent = 'Copied!'; toast.style = "position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:var(--primary-color); color:white; padding:10px 20px; border-radius:5px; z-index:9999;"; document.body.appendChild(toast); setTimeout(() => toast.remove(), 1000); }); };
 
-    stockTableBody.addEventListener('click', function(e) {
-      const cell = e.target.closest('.clickable-cell');
-      if (cell && cell.dataset.copy) {
-        copyToClipboard(cell.dataset.copy, cell);
+      function filterTables() {
+        const codeFilter = document.getElementById('nav-item-code-filter').value.toLowerCase();
+        const desc1Filter = document.getElementById('nav-desc-filter-1').value.toLowerCase();
+        const desc2Filter = document.getElementById('nav-desc-filter-2').value.toLowerCase();
+        const branchCode = document.getElementById('item-code-filter').value.toLowerCase();
+        const branchD1 = document.getElementById('desc-filter-1').value.toLowerCase();
+        const branchD2 = document.getElementById('desc-filter-2').value.toLowerCase();
+        const whsCode = document.getElementById('whs-item-code-filter').value.toLowerCase();
+        const whsD1 = document.getElementById('whs-desc-filter-1').value.toLowerCase();
+        const whsD2 = document.getElementById('whs-desc-filter-2').value.toLowerCase();
+
+        const fBranch = stockData.filter(r => String(r.itemCode).toLowerCase().includes(codeFilter) && String(r.itemCode).toLowerCase().includes(branchCode) && String(r.itemDesc).toLowerCase().includes(desc1Filter) && String(r.itemDesc).toLowerCase().includes(branchD1) && String(r.itemDesc).toLowerCase().includes(desc2Filter) && String(r.itemDesc).toLowerCase().includes(branchD2));
+        const fWhs = whsData.filter(r => String(r.itemCode).toLowerCase().includes(codeFilter) && String(r.itemCode).toLowerCase().includes(whsCode) && String(r.itemDesc).toLowerCase().includes(desc1Filter) && String(r.itemDesc).toLowerCase().includes(whsD1) && String(r.itemDesc).toLowerCase().includes(desc2Filter) && String(r.itemDesc).toLowerCase().includes(whsD2));
+        renderStockTable(fBranch, stockTableBody); renderStockTable(fWhs, whsStockTableBody);
       }
-    });
+      ['nav-item-code-filter', 'nav-desc-filter-1', 'nav-desc-filter-2', 'item-code-filter', 'desc-filter-1', 'desc-filter-2', 'whs-item-code-filter', 'whs-desc-filter-1', 'whs-desc-filter-2'].forEach(id => document.getElementById(id)?.addEventListener('input', filterTables));
 
-    whsStockTableBody.addEventListener('click', function(e) {
-      const cell = e.target.closest('.clickable-cell');
-      if (cell && cell.dataset.copy) {
-        copyToClipboard(cell.dataset.copy, cell);
-      }
-    });
-
-    ramssdTableBody.addEventListener('click', function(e) {
-      const cell = e.target.closest('.clickable-cell');
-      if (cell && cell.dataset.copy) {
-        copyToClipboard(cell.dataset.copy, cell);
-      }
-    });
-
-    function filterStockTable() {
-      const codeFilter = document.getElementById('item-code-filter').value.toLowerCase();
-      const desc1Filter = document.getElementById('desc-filter-1').value.toLowerCase();
-      const desc2Filter = document.getElementById('desc-filter-2').value.toLowerCase();
-
-      const filtered = stockData.filter(row => {
-        const code = String(row.itemCode || '').toLowerCase();
-        const desc = String(row.itemDesc || '').toLowerCase();
-        return code.includes(codeFilter) && desc.includes(desc1Filter) && desc.includes(desc2Filter);
-      });
-
-      renderStockTable(filtered);
-    }
-
-    document.getElementById('item-code-filter').addEventListener('input', filterStockTable);
-    document.getElementById('desc-filter-1').addEventListener('input', filterStockTable);
-    document.getElementById('desc-filter-2').addEventListener('input', filterStockTable);
-
-    function filterWHSStockTable() {
-      const codeFilter = document.getElementById('whs-item-code-filter').value.toLowerCase();
-      const desc1Filter = document.getElementById('whs-desc-filter-1').value.toLowerCase();
-      const desc2Filter = document.getElementById('whs-desc-filter-2').value.toLowerCase();
-
-      const filtered = whsData.filter(row => {
-        const code = String(row.itemCode || '').toLowerCase();
-        const desc = String(row.itemDesc || '').toLowerCase();
-        return code.includes(codeFilter) && desc.includes(desc1Filter) && desc.includes(desc2Filter);
-      });
-
-      renderWHSStockTable(filtered);
-    }
-
-    document.getElementById('whs-item-code-filter').addEventListener('input', filterWHSStockTable);
-    document.getElementById('whs-desc-filter-1').addEventListener('input', filterWHSStockTable);
-    document.getElementById('whs-desc-filter-2').addEventListener('input', filterWHSStockTable);
-
-    function escapeHtml(text) {
-      const div = document.createElement('div');
-      div.textContent = text;
-      return div.innerHTML;
-    }
-
-    function updateDateTime() {
-      const now = new Date();
-      const options = { 
-        weekday: 'short', 
-        year: 'numeric', 
-        month: 'short', 
-        day: '2-digit',
-        hour: '2-digit', 
-        minute: '2-digit', 
-        second: '2-digit',
-        hour12: false 
-      };
-      document.getElementById('navbar-datetime').textContent = now.toLocaleString('en-US', options);
-    }
-    setInterval(updateDateTime, 1000);
-    updateDateTime();
-
-    document.getElementById('nav-item-code-filter').addEventListener('input', filterBothTables);
-    document.getElementById('nav-desc-filter-1').addEventListener('input', filterBothTables);
-    document.getElementById('nav-desc-filter-2').addEventListener('input', filterBothTables);
-
-    function filterBothTables() {
-      const codeFilter = document.getElementById('nav-item-code-filter').value.toLowerCase();
-      const desc1Filter = document.getElementById('nav-desc-filter-1').value.toLowerCase();
-      const desc2Filter = document.getElementById('nav-desc-filter-2').value.toLowerCase();
-
-      const filteredBranch = stockData.filter(row => {
-        const code = String(row.itemCode || '').toLowerCase();
-        const desc = String(row.itemDesc || '').toLowerCase();
-        return code.includes(codeFilter) && desc.includes(desc1Filter) && desc.includes(desc2Filter);
-      });
-
-      const filteredWHS = whsData.filter(row => {
-        const code = String(row.itemCode || '').toLowerCase();
-        const desc = String(row.itemDesc || '').toLowerCase();
-        return code.includes(codeFilter) && desc.includes(desc1Filter) && desc.includes(desc2Filter);
-      });
-
-      renderStockTable(filteredBranch);
-      renderWHSStockTable(filteredWHS);
-    }
-
-    document.getElementById('theme-select').addEventListener('change', function() {
-      document.documentElement.setAttribute('data-theme', this.value);
-    });
-
-    // RAM/SSD Modal Functionality
-
-    let ramssdData = [];
-
-    openRamSsdModalBtn.addEventListener('click', () => {
-      ramSsdModal.style.display = 'block';
-    });
-
-    closeRamSsdModalBtn.addEventListener('click', () => {
-      ramSsdModal.style.display = 'none';
-    });
-
-    window.addEventListener('click', (e) => {
-      if (e.target === ramSsdModal) {
-        ramSsdModal.style.display = 'none';
-      }
-      if (e.target === quotationModal) {
-        quotationModal.style.display = 'none';
-      }
-      if (e.target === notesModal) {
-        notesModal.style.display = 'none';
-      }
-    });
-
-    openQuotationModalBtn.addEventListener('click', () => {
-      const now = new Date();
-      const quoteDate = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: '2-digit' });
-      document.getElementById('quote-date').textContent = quoteDate;
-      quotationModal.style.display = 'block';
-    });
-
-    closeQuotationModalBtn.addEventListener('click', () => {
-      quotationModal.style.display = 'none';
-    });
-
-    openNotesModalBtn.addEventListener('click', () => {
-      notesModal.style.display = 'block';
-    });
-
-    closeNotesModalBtn.addEventListener('click', () => {
-      notesModal.style.display = 'none';
-    });
-
-    ramssdFileInput.addEventListener('change', (e) => handleRamSsdFile(e));
-
-    function handleRamSsdFile(e) {
-      const file = e.target.files[0];
-      if (!file) return;
-
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        try {
-          const text = e.target.result;
-          const lines = text.split('\n').filter(line => line.trim());
-          
-          if (lines.length < 2) {
-            alert('CSV file is empty or has no data rows');
-            return;
-          }
-
-          const headers = lines[0].split(',').map(h => h.trim().replace(/"/g, ''));
-          const colMap = {
-            itemCode: headers.findIndex(h => h.toLowerCase().includes('item code')),
-            description: headers.findIndex(h => h.toLowerCase().includes('description')),
-            onHand: headers.findIndex(h => h.toLowerCase().includes('on-hand')),
-            cost: headers.findIndex(h => h.toLowerCase().includes('cost')),
-            memory: headers.findIndex(h => h.toLowerCase().includes('memory alone')),
-            bundle: headers.findIndex(h => h.toLowerCase().includes('bundle'))
-          };
-
-          const items = [];
-          for (let i = 1; i < lines.length; i++) {
-            const cols = parseCSVLine(lines[i]);
-            if (cols.length < 3) continue;
-
-            let itemCode = cols[colMap.itemCode] ? cols[colMap.itemCode].trim() : '';
-            const description = cols[colMap.description] ? cols[colMap.description].trim() : '';
-            const cost = cols[colMap.cost] ? cols[colMap.cost].trim() : '';
-            const memory = cols[colMap.memory] ? cols[colMap.memory].trim() : '';
-            const bundle = cols[colMap.bundle] ? cols[colMap.bundle].trim() : '';
-
-            if (!itemCode && !description) continue;
-
-            if (itemCode.length > 0 && /^\d+$/.test(itemCode.replace(/"/g, ''))) {
-              itemCode = itemCode.padStart(10, '0');
-            }
-
-            items.push({ itemCode, description, cost, memory, bundle });
-          }
-
-          ramssdData = items;
-          ramssdFileInfo.textContent = file.name;
+      // RAM/SSD LOGIC
+      let ramssdData = [];
+      const ramssdFileInput = document.getElementById('ramssd-fileInput'), ramssdTableBody = document.getElementById('ramssd-table-body');
+      ramssdFileInput?.addEventListener('change', (e) => {
+        const file = e.target.files[0]; if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const lines = e.target.result.split('\n').filter(l => l.trim());
+          const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
+          const colMap = { itemCode: headers.findIndex(h => h.includes('item code')), description: headers.findIndex(h => h.includes('description')), cost: headers.findIndex(h => h.includes('cost')), memory: headers.findIndex(h => h.includes('memory alone')), bundle: headers.findIndex(h => h.includes('bundle')) };
+          ramssdData = lines.slice(1).map(line => {
+            const cols = parseCSVLine(line);
+            return { itemCode: cols[colMap.itemCode]?.trim().padStart(10, '0') || '', description: cols[colMap.description]?.trim() || '', cost: cols[colMap.cost]?.trim() || '', memory: cols[colMap.memory]?.trim() || '', bundle: cols[colMap.bundle]?.trim() || '' };
+          }).filter(r => r.itemCode || r.description);
+          document.getElementById('ramssd-file-info').textContent = file.name;
           renderRamSsdTable(ramssdData);
-        } catch (err) {
-          console.error('Error parsing CSV:', err);
-          alert('Error parsing CSV: ' + err.message);
-        }
-      };
-      reader.readAsText(file);
-    }
-
-    function parseCSVLine(line) {
-      const cols = [];
-      let current = '';
-      let inQuotes = false;
-      
-      for (let i = 0; i < line.length; i++) {
-        const char = line[i];
-        if (char === '"') {
-          inQuotes = !inQuotes;
-        } else if (char === ',' && !inQuotes) {
-          cols.push(current);
-          current = '';
-        } else {
-          current += char;
-        }
-      }
-      cols.push(current);
-      return cols;
-    }
-
-    function renderRamSsdTable(data) {
-      if (!data || data.length === 0) {
-        ramssdTableBody.innerHTML = '<tr><td colspan="5" class="no-data">No data found</td></tr>';
-        return;
-      }
-      let html = '';
-      data.forEach(row => {
-        const itemCode = String(row.itemCode || '');
-        const itemDesc = String(row.description || '');
-        const cost = String(row.cost || '');
-        const memory = String(row.memory || '');
-        const bundle = String(row.bundle || '');
-        html += `<tr>
-          <td class="clickable-cell" data-copy="${escapeHtml(itemCode)}">${escapeHtml(itemCode)}</td>
-          <td class="clickable-cell" data-copy="${escapeHtml(itemDesc)}">${escapeHtml(itemDesc)}</td>
-          <td class="clickable-cell" data-copy="${escapeHtml(cost)}">${escapeHtml(cost)}</td>
-          <td class="clickable-cell" data-copy="${escapeHtml(memory)}">${escapeHtml(memory)}</td>
-          <td class="clickable-cell" data-copy="${escapeHtml(bundle)}">${escapeHtml(bundle)}</td>
-        </tr>`;
-      });
-      ramssdTableBody.innerHTML = html;
-    }
-
-    document.getElementById('ramssd-item-code-filter').addEventListener('input', filterRamSsdTable);
-    document.getElementById('ramssd-desc-filter-1').addEventListener('input', filterRamSsdTable);
-    document.getElementById('ramssd-desc-filter-2').addEventListener('input', filterRamSsdTable);
-    document.getElementById('ramssd-desc-filter-3').addEventListener('input', filterRamSsdTable);
-
-    function filterRamSsdTable() {
-      const codeFilter = document.getElementById('ramssd-item-code-filter').value.toLowerCase();
-      const desc1Filter = document.getElementById('ramssd-desc-filter-1').value.toLowerCase();
-      const desc2Filter = document.getElementById('ramssd-desc-filter-2').value.toLowerCase();
-      const desc3Filter = document.getElementById('ramssd-desc-filter-3').value.toLowerCase();
-
-      const filtered = ramssdData.filter(row => {
-        const code = String(row.itemCode || '').toLowerCase();
-        const desc = String(row.description || '').toLowerCase();
-        const memory = String(row.memory || '').toLowerCase();
-        const bundle = String(row.bundle || '').toLowerCase();
-        return code.includes(codeFilter) && desc.includes(desc1Filter) && desc.includes(desc2Filter) && (desc.includes(desc3Filter) || memory.includes(desc3Filter) || bundle.includes(desc3Filter));
+        };
+        reader.readAsText(file);
       });
 
-      renderRamSsdTable(filtered);
-    }
-
-    // Quotation Engine Functionality
-
-    let quoteBankData = [];
-    const quoteCsvInput = document.getElementById('quote-csv-file');
-    const quoteFileInfo = document.getElementById('quote-file-info');
-    const quoteBankSelect = document.getElementById('quote-bank-select');
-    const itemCostInput = document.getElementById('item-cost');
-    const baseSrpDisplay = document.getElementById('base-srp-display');
-    const quoteTermsContainer = document.getElementById('quote-terms-container');
-    const quoteRateDisplay = document.getElementById('quote-rate-display');
-    const quoteTwasDisplay = document.getElementById('quote-twas-display');
-    const quoteSwipeDisplay = document.getElementById('quote-swipe-display');
-    const quoteMonthlyDisplay = document.getElementById('quote-monthly-display');
-
-    // New Summary Elements
-    const summarySrp = document.getElementById('summary-srp');
-    const summaryCash = document.getElementById('summary-cash');
-    const summaryBank = document.getElementById('summary-bank');
-    const summaryTerm = document.getElementById('summary-term');
-    const summaryMonthly = document.getElementById('summary-monthly');
-    const summaryTotal = document.getElementById('summary-total');
-    const summarySave = document.getElementById('summary-save');
-    const toggleSettingsBtn = document.getElementById('toggleQuoteSettings');
-    const settingsPanel = document.getElementById('quoteSettingsPanel');
-    const cashTransferInput = document.getElementById('cash-transfer-value');
-
-    toggleSettingsBtn.addEventListener('click', () => {
-      settingsPanel.classList.toggle('active');
-    });
-
-    cashTransferInput.addEventListener('input', () => {
-      let val = cashTransferInput.value;
-      let srpText = baseSrpDisplay.value.replace(/[₱,]/g, '');
-      const baseSrp = parseFloat(srpText) || 0;
-      
-      if (val) {
-        summaryCash.textContent = val.startsWith('₱') ? val : '₱' + val;
-        const cashValue = parseFloat(val.replace(/[₱,]/g, '')) || 0;
-        const saveAmount = baseSrp - cashValue;
-        summarySave.textContent = saveAmount >= 0 ? "₱" + saveAmount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) : "₱0.00";
-      } else {
-        summaryCash.textContent = "₱0.00";
-        summarySave.textContent = "₱0.00";
+      function parseCSVLine(l) { const cols = []; let cur = '', inQ = false; for (let c of l) { if (c === '"') inQ = !inQ; else if (c === ',' && !inQ) { cols.push(cur); cur = ''; } else cur += c; } cols.push(cur); return cols; }
+      function renderRamSsdTable(data) {
+        ramssdTableBody.innerHTML = data.map(r => `<tr><td class="clickable-cell" onclick="copyText('${r.itemCode}')">${escapeHtml(r.itemCode)}</td><td class="clickable-cell" onclick="copyText('${r.description}')">${escapeHtml(r.description)}</td><td onclick="copyText('${r.cost}')">${escapeHtml(r.cost)}</td><td onclick="copyText('${r.memory}')">${escapeHtml(r.memory)}</td><td onclick="copyText('${r.bundle}')">${escapeHtml(r.bundle)}</td></tr>`).join('');
       }
-    });
 
-    const quoteAllTerms = [
-      { id: 'straight', label: 'Straight' },
-      { id: '3', label: '3 Mos' },
-      { id: '6', label: '6 Mos' },
-      { id: '9', label: '9 Mos' },
-      { id: '12', label: '12 Mos' }
-    ];
+      function filterRamSsd() {
+        const cF = document.getElementById('ramssd-item-code-filter').value.toLowerCase();
+        const d1 = document.getElementById('ramssd-desc-filter-1').value.toLowerCase();
+        const d2 = document.getElementById('ramssd-desc-filter-2').value.toLowerCase();
+        const d3 = document.getElementById('ramssd-desc-filter-3').value.toLowerCase();
+        const filtered = ramssdData.filter(r => r.itemCode.toLowerCase().includes(cF) && r.description.toLowerCase().includes(d1) && r.description.toLowerCase().includes(d2) && (r.description.toLowerCase().includes(d3) || r.memory.toLowerCase().includes(d3) || r.bundle.toLowerCase().includes(d3)));
+        renderRamSsdTable(filtered);
+      }
+      ['ramssd-item-code-filter', 'ramssd-desc-filter-1', 'ramssd-desc-filter-2', 'ramssd-desc-filter-3'].forEach(id => document.getElementById(id)?.addEventListener('input', filterRamSsd));
 
-    quoteCsvInput.addEventListener('change', (e) => handleQuoteCSV(e));
-    itemCostInput.addEventListener('input', () => {
-      const cost = parseFloat(itemCostInput.value) || 0;
-      const baseSrp = cost * 1.20;
-      baseSrpDisplay.value = "₱" + baseSrp.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-      calculateQuote();
-    });
-    baseSrpDisplay.addEventListener('input', calculateQuote);
-    quoteBankSelect.addEventListener('change', () => {
-      updateQuoteTerms();
-      calculateQuote();
-    });
-
-    function handleQuoteCSV(event) {
-      const file = event.target.files[0];
-      if (!file) return;
-
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        try {
-          const text = e.target.result;
-          const lines = text.split(/\r?\n/).filter(line => line.trim());
-          if (lines.length < 2) {
-            alert("The file appears to be empty or structurally invalid.");
-            return;
-          }
-
+      // QUOTATION LOGIC
+      let quoteBankData = [];
+      const quoteCsvInput = document.getElementById('quote-csv-file'), quoteBankSelect = document.getElementById('quote-bank-select'), itemCostInput = document.getElementById('item-cost'), baseSrpDisplay = document.getElementById('base-srp-display'), cashTransferInput = document.getElementById('cash-transfer-value'), quoteTermsContainer = document.getElementById('quote-terms-container');
+      
+      quoteCsvInput?.addEventListener('change', (e) => {
+        const file = e.target.files[0]; if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const lines = e.target.result.split(/\r?\n/).filter(l => l.trim());
           const headers = lines[0].split(',').map(h => h.trim().toUpperCase());
-          let parsedBanks = [];
+          quoteBankData = lines.slice(1).map(l => {
+            const cols = l.split(','); const rates = {};
+            for (let j = 1; j < headers.length; j++) if (cols[j]) rates[headers[j] === 'STRAIGHT' ? 'straight' : headers[j]] = parseFloat(cols[j].replace('%', ''));
+            return { name: cols[0].trim(), rates };
+          }).filter(b => Object.keys(b.rates).length > 0);
+          document.getElementById('quote-file-info').textContent = file.name;
+          quoteBankSelect.innerHTML = '<option value="">-- Select Bank --</option>' + quoteBankData.map((b, i) => `<option value="${i}">${b.name}</option>`).join('');
+        };
+        reader.readAsText(file);
+      });
 
-          for (let i = 1; i < lines.length; i++) {
-            const columns = lines[i].split(',');
-            const bankName = columns[0].trim();
-            if (!bankName) continue;
+      window.calculateQuote = function() {
+        const cost = parseFloat(itemCostInput.value) || 0; const srp = cost * 1.20;
+        baseSrpDisplay.value = "₱" + srp.toLocaleString('en-US', {minimumFractionDigits:2});
+        document.getElementById('summary-srp').textContent = baseSrpDisplay.value;
+        const cashVal = cashTransferInput.value;
+        document.getElementById('summary-cash').textContent = cashVal ? (cashVal.startsWith('₱') ? cashVal : '₱' + cashVal) : "₱0.00";
+        const cashNum = parseFloat(cashVal.replace(/[₱,]/g, '')) || 0;
+        document.getElementById('summary-save').textContent = "₱" + Math.max(0, srp - cashNum).toLocaleString('en-US', {minimumFractionDigits:2});
 
-            let ratesObj = {};
-            for (let j = 1; j < headers.length; j++) {
-              if (columns[j] === undefined) continue;
-              let cellValue = columns[j].replace('%', '').trim();
-              if (cellValue !== "") {
-                let numericRate = parseFloat(cellValue);
-                if (!isNaN(numericRate)) {
-                  let targetTermKey = headers[j] === 'STRAIGHT' ? 'straight' : headers[j];
-                  ratesObj[targetTermKey] = numericRate;
-                }
-              }
-            }
-
-            if (Object.keys(ratesObj).length > 0) {
-              parsedBanks.push({ name: bankName, rates: ratesObj });
-            }
-          }
-
-          if (parsedBanks.length > 0) {
-            quoteBankData = parsedBanks;
-            quoteFileInfo.textContent = file.name;
-            populateBankDropdown();
-          } else {
-            alert("Processing failed. Make sure your column headers match: BANK, STRAIGHT, 3, 6, 9, 12");
-          }
-        } catch (err) {
-          console.error('Error parsing Quote CSV:', err);
-          alert('Error parsing Quote CSV: ' + err.message);
-        }
+        if (quoteBankSelect.value === "") return;
+        const bank = quoteBankData[quoteBankSelect.value]; document.getElementById('summary-bank').textContent = bank.name;
+        const termRadio = document.querySelector('input[name="quote-term"]:checked');
+        if (!termRadio) return;
+        const termId = termRadio.value; document.getElementById('summary-term').textContent = termId === 'straight' ? 'Straight' : termId + ' Mos';
+        const rate = bank.rates[termId] || 0; document.getElementById('quote-rate-display').textContent = rate.toFixed(2) + "%";
+        const twas = srp * 0.005; document.getElementById('quote-twas-display').textContent = "₱" + twas.toLocaleString('en-US', {minimumFractionDigits:2});
+        const finalPrice = srp + twas + (srp * rate / 100);
+        document.getElementById('quote-swipe-display').textContent = "₱" + finalPrice.toLocaleString('en-US', {minimumFractionDigits:2});
+        document.getElementById('summary-total').textContent = document.getElementById('quote-swipe-display').textContent;
+        const monthly = finalPrice / (termId === 'straight' ? 1 : parseInt(termId));
+        document.getElementById('summary-monthly').textContent = "₱" + monthly.toLocaleString('en-US', {minimumFractionDigits:2}) + " / mo";
       };
-      reader.readAsText(file);
-    }
 
-    function populateBankDropdown() {
-      quoteBankSelect.innerHTML = '<option value="">-- Select Bank --</option>';
-      quoteBankData.forEach((bank, index) => {
-        let option = document.createElement("option");
-        option.value = index;
-        option.text = bank.name;
-        quoteBankSelect.appendChild(option);
+      quoteBankSelect?.addEventListener('change', () => {
+        if (quoteBankSelect.value === "") { quoteTermsContainer.innerHTML = ''; return; }
+        const bank = quoteBankData[quoteBankSelect.value];
+        quoteTermsContainer.innerHTML = Object.keys(bank.rates).map(t => `<label class="term-item"><input type="radio" name="quote-term" value="${t}" onchange="calculateQuote()"> ${t === 'straight' ? 'Straight' : t + ' Mos'}</label>`).join('');
+        const first = quoteTermsContainer.querySelector('input'); if (first) { first.checked = true; window.calculateQuote(); }
       });
-      updateQuoteTerms();
-    }
+      [itemCostInput, cashTransferInput].forEach(el => el?.addEventListener('input', window.calculateQuote));
+      document.getElementById('toggleQuoteSettings')?.addEventListener('click', () => document.getElementById('quoteSettingsPanel').classList.toggle('active'));
 
-    function updateQuoteTerms() {
-      quoteTermsContainer.innerHTML = '';
-      if (quoteBankSelect.value === "") return;
+      // NOTES & FIREBASE SYNC
+      const clientTableBody = document.getElementById('client-table-body'), notesDatePicker = document.getElementById('notes-datepicker'), inquiredContent = document.getElementById('inquired-items-content');
 
-      const selectedBank = quoteBankData[quoteBankSelect.value];
-      let firstChecked = false;
+      // Sync Client List
+      onSnapshot(query(collection(db, "clients"), orderBy("timestamp", "desc")), (querySnapshot) => {
+        const clients = [];
+        querySnapshot.forEach((doc) => clients.push({ id: doc.id, ...doc.data() }));
+        renderClients(clients);
+      });
 
-      quoteAllTerms.forEach(term => {
-        const hasTerm = selectedBank.rates[term.id] !== undefined;
-        
-        const labelEl = document.createElement("label");
-        labelEl.className = "term-item" + (hasTerm ? "" : " disabled");
+      function renderClients(clients) {
+        if (clients.length === 0) { clientTableBody.innerHTML = '<tr><td colspan="5" class="no-data">No clients recorded</td></tr>'; return; }
+        clientTableBody.innerHTML = clients.map((c) => `
+          <tr>
+            <td>${c.date}</td>
+            <td class="clickable-cell" onclick="copyText('${c.name}')">${escapeHtml(c.name)}</td>
+            <td class="clickable-cell" onclick="copyText('${c.inquiry}')">${escapeHtml(c.inquiry)}</td>
+            <td>
+              <div class="status-checkboxes">
+                <label><input type="checkbox" onchange="updateClientStatus('${c.id}', 'i2v', this.checked)" ${c.i2v?'checked':''}> I2v</label>
+                <label><input type="checkbox" onchange="updateClientStatus('${c.id}', 'w4r', this.checked)" ${c.w4r?'checked':''}> w4r</label>
+                <label><input type="checkbox" onchange="updateClientStatus('${c.id}', 'replied', this.checked)" ${c.replied?'checked':''}> replied</label>
+              </div>
+            </td>
+            <td><button class="delete-btn" onclick="deleteClientCloud('${c.id}')">Del</button></td>
+          </tr>
+        `).join('');
+      }
 
-        const inputEl = document.createElement("input");
-        inputEl.type = "radio";
-        inputEl.name = "quote-term-option";
-        inputEl.value = term.id;
-        inputEl.disabled = !hasTerm;
-        inputEl.onchange = calculateQuote;
+      window.updateClientStatus = async (id, key, val) => {
+        await updateDoc(doc(db, "clients", id), { [key]: val });
+      };
 
-        if (hasTerm && !firstChecked) {
-          inputEl.checked = true;
-          firstChecked = true;
+      window.deleteClientCloud = async (id) => {
+        if (confirm('Delete this client permanently?')) await deleteDoc(doc(db, "clients", id));
+      };
+
+      document.getElementById('addClientBtn')?.addEventListener('click', async () => {
+        const n = prompt('Client Name:'); if (!n) return;
+        const inq = prompt('Inquiry Details:');
+        await addDoc(collection(db, "clients"), {
+          date: new Date().toISOString().split('T')[0],
+          name: n,
+          inquiry: inq || '',
+          i2v: false,
+          w4r: false,
+          replied: false,
+          timestamp: Date.now()
+        });
+      });
+
+      // Sync Inquired Items (Calendar)
+      let inquirySaveTimeout;
+      notesDatePicker?.addEventListener('change', async () => {
+        const date = notesDatePicker.value; if (!date) return;
+        const docSnap = await getDoc(doc(db, "inquiries", date));
+        if (docSnap.exists()) {
+          inquiredContent.value = docSnap.data().content;
+        } else {
+          inquiredContent.value = `Date: ${date}\n\nItems:\n\n`;
         }
-
-        labelEl.appendChild(inputEl);
-        labelEl.appendChild(document.createTextNode(` ${term.label}`));
-        quoteTermsContainer.appendChild(labelEl);
       });
-    }
 
-    function calculateQuote() {
-      // Get base SRP from display field (handle possible manual edits/formatting)
-      let srpText = baseSrpDisplay.value.replace(/[₱,]/g, '');
-      const baseSrp = parseFloat(srpText) || 0;
-      
-      // Update Summary SRP - Ensure symbol is present
-      let displayValue = baseSrpDisplay.value;
-      if (displayValue) {
-        summarySrp.textContent = displayValue.startsWith('₱') ? displayValue : '₱' + displayValue;
-      } else {
-        summarySrp.textContent = "₱0.00";
+      inquiredContent?.addEventListener('input', () => {
+        const date = notesDatePicker.value; if (!date) return;
+        clearTimeout(inquirySaveTimeout);
+        inquirySaveTimeout = setTimeout(async () => {
+          await setDoc(doc(db, "inquiries", date), { content: inquiredContent.value });
+        }, 1000);
+      });
+
+      // Initialize Calendar to Today
+      if (notesDatePicker) {
+        notesDatePicker.value = new Date().toISOString().split('T')[0];
+        notesDatePicker.dispatchEvent(new Event('change'));
       }
 
-      if (quoteBankSelect.value === "") {
-        quoteRateDisplay.textContent = "0.00%";
-        quoteTwasDisplay.textContent = "₱0.00";
-        quoteSwipeDisplay.textContent = "₱0.00";
-        summaryBank.textContent = "None";
-        summaryTerm.textContent = "None";
-        summaryMonthly.textContent = "₱0.00 / mo";
-        summaryTotal.textContent = "₱0.00";
-        return;
-      }
-
-      const selectedBank = quoteBankData[quoteBankSelect.value];
-      summaryBank.textContent = selectedBank.name;
-
-      const selectedTermRadio = document.querySelector('input[name="quote-term-option"]:checked');
-      
-      if (!selectedTermRadio) {
-        summaryTerm.textContent = "None";
-        summaryMonthly.textContent = "₱0.00 / mo";
-        return;
-      }
-      
-      const termId = selectedTermRadio.value;
-      const termLabelObj = quoteAllTerms.find(t => t.id === termId);
-      summaryTerm.textContent = termLabelObj ? termLabelObj.label : "None";
-
-      const ratePercentage = selectedBank.rates[termId] || 0;
-      quoteRateDisplay.textContent = ratePercentage.toFixed(2) + "%";
-
-      const twas = baseSrp * 0.005;
-      quoteTwasDisplay.textContent = "₱" + twas.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-
-      const rateDecimal = ratePercentage / 100;
-      const mdrAmount = baseSrp * rateDecimal;
-      const finalSwipePrice = baseSrp + twas + mdrAmount;
-      
-      const monthsDivider = termId === 'straight' ? 1 : parseInt(termId);
-      const monthlyDue = finalSwipePrice / monthsDivider;
-
-      const monthlyText = "₱" + monthlyDue.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + (termId === 'straight' ? " (Straight)" : " / mo");
-      
-      quoteSwipeDisplay.textContent = "₱" + finalSwipePrice.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-      summaryMonthly.textContent = monthlyText;
-      summaryTotal.textContent = "₱" + finalSwipePrice.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    }
-    
-    }); // DOMContentLoaded
+      function escapeHtml(t) { const d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
+    });
   </script>
 </body>
 </html>
