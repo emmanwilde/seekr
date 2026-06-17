@@ -785,12 +785,25 @@
     loginPass.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleLogin(); });
     logoutBtn.addEventListener('click', () => signOut(auth));
 
+    let syncUnsubscribers = [];
+
     onAuthStateChanged(auth, (user) => {
       if (user) {
         loginOverlay.style.display = 'none';
         loginPass.value = '';
+        if (typeof window.initializeFirebaseSync === 'function') {
+          window.initializeFirebaseSync();
+        }
       } else {
         loginOverlay.style.display = 'flex';
+        // Cleanup listeners
+        syncUnsubscribers.forEach(unsub => unsub());
+        syncUnsubscribers = [];
+        // Clear sensitive UI data
+        const ids = ['home-todos', 'home-promotions', 'home-schedules', 'inquired-items-content'];
+        ids.forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+        const clientTable = document.getElementById('client-table-body');
+        if (clientTable) clientTable.innerHTML = '<tr><td colspan="5" class="no-data">Login to view clients</td></tr>';
       }
     });
 
@@ -810,16 +823,10 @@
     };
 
     document.addEventListener('DOMContentLoaded', function() {
-      // FIREBASE SYNC FOR HOME PANELS
+      // HOME PANELS INPUT LISTENERS
       ['todos', 'promotions', 'schedules'].forEach(id => {
         const el = document.getElementById('home-' + id);
         const docRef = doc(db, "workspace", id);
-
-        onSnapshot(docRef, (docSnap) => {
-          if (docSnap.exists() && document.activeElement !== el) {
-            el.value = docSnap.data().content;
-          }
-        });
 
         let saveTimeout;
         el.addEventListener('input', () => {
@@ -994,12 +1001,7 @@
       // NOTES & FIREBASE SYNC
       const clientTableBody = document.getElementById('client-table-body'), notesDatePicker = document.getElementById('notes-datepicker'), inquiredContent = document.getElementById('inquired-items-content');
 
-      // Sync Client List
-      onSnapshot(query(collection(db, "clients"), orderBy("timestamp", "desc")), (querySnapshot) => {
-        const clients = [];
-        querySnapshot.forEach((doc) => clients.push({ id: doc.id, ...doc.data() }));
-        renderClients(clients);
-      });
+      // Sync Client List (Moved to initializeFirebaseSync)
 
       function renderClients(clients) {
         if (clients.length === 0) { clientTableBody.innerHTML = '<tr><td colspan="5" class="no-data">No clients recorded</td></tr>'; return; }
@@ -1062,10 +1064,47 @@
         }, 1000);
       });
 
-      // Initialize Calendar to Today
+      // Initialize Sync System
+      window.initializeFirebaseSync = () => {
+        // Cleanup existing listeners
+        syncUnsubscribers.forEach(unsub => unsub());
+        syncUnsubscribers = [];
+
+        // Sync Home Panels
+        ['todos', 'promotions', 'schedules'].forEach(id => {
+          const el = document.getElementById('home-' + id);
+          if (!el) return;
+          const docRef = doc(db, "workspace", id);
+          const unsub = onSnapshot(docRef, (docSnap) => {
+            if (docSnap.exists() && document.activeElement !== el) {
+              el.value = docSnap.data().content;
+            }
+          }, (err) => console.error(`Sync error (${id}):`, err));
+          syncUnsubscribers.push(unsub);
+        });
+
+        // Sync Client List
+        const unsubClients = onSnapshot(query(collection(db, "clients"), orderBy("timestamp", "desc")), (querySnapshot) => {
+          const clients = [];
+          querySnapshot.forEach((doc) => clients.push({ id: doc.id, ...doc.data() }));
+          renderClients(clients);
+        }, (err) => console.error("Sync error (clients):", err));
+        syncUnsubscribers.push(unsubClients);
+
+        // Sync Calendar (Trigger fetch for current date)
+        if (notesDatePicker) {
+          notesDatePicker.dispatchEvent(new Event('change'));
+        }
+      };
+
+      // Set initial date for calendar
       if (notesDatePicker) {
         notesDatePicker.value = new Date().toISOString().split('T')[0];
-        notesDatePicker.dispatchEvent(new Event('change'));
+      }
+
+      // If user is already authenticated (persistence), start syncing now
+      if (auth.currentUser) {
+        window.initializeFirebaseSync();
       }
 
       function escapeHtml(t) { const d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
