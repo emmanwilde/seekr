@@ -696,7 +696,7 @@
             <div class="settings-panel" id="quoteSettingsPanel">
               <div class="calc-group"><div class="upload-btn-wrapper"><button class="import-btn">IMPORT RATES (CSV)</button><input type="file" id="quote-csv-file" accept=".csv" /></div><span id="quote-file-info" style="font-size:12px;">No rates loaded</span></div>
               <div class="calc-group"><label>Item Cost</label><input type="number" id="item-cost" value="0"></div>
-              <div class="calc-group"><label>SRP Display</label><input type="text" id="base-srp-display" readonly></div>
+              <div class="calc-group"><label>SRP Display</label><input type="text" id="base-srp-display"></div>
               <div class="calc-group"><label>CASH/BANK PRICE</label><input type="text" id="cash-transfer-value"></div>
               <div class="calc-group"><label>Bank</label><select id="quote-bank-select"><option value="">-- Upload CSV --</option></select></div>
               <div class="calc-group"><label>Term</label><div class="terms-grid" id="quote-terms-container"></div></div>
@@ -947,6 +947,7 @@
 
       // QUOTATION LOGIC
       let quoteBankData = [];
+      let isManualSrp = false;
       const quoteCsvInput = document.getElementById('quote-csv-file'), quoteBankSelect = document.getElementById('quote-bank-select'), itemCostInput = document.getElementById('item-cost'), baseSrpDisplay = document.getElementById('base-srp-display'), cashTransferInput = document.getElementById('cash-transfer-value'), quoteTermsContainer = document.getElementById('quote-terms-container');
       
       quoteCsvInput?.addEventListener('change', (e) => {
@@ -966,10 +967,21 @@
         reader.readAsText(file);
       });
 
-      window.calculateQuote = function() {
-        const cost = parseFloat(itemCostInput.value) || 0; const srp = cost * 1.20;
-        baseSrpDisplay.value = "₱" + srp.toLocaleString('en-US', {minimumFractionDigits:2});
-        document.getElementById('summary-srp').textContent = baseSrpDisplay.value;
+      window.calculateQuote = function(source) {
+        if (source === 'item-cost') isManualSrp = false;
+        if (source === 'base-srp-display') isManualSrp = true;
+
+        const cost = parseFloat(itemCostInput.value) || 0;
+        let srp = 0;
+
+        if (isManualSrp) {
+          srp = parseFloat(baseSrpDisplay.value.replace(/[₱,]/g, '')) || 0;
+        } else {
+          srp = cost * 1.20;
+          baseSrpDisplay.value = "₱" + srp.toLocaleString('en-US', {minimumFractionDigits:2});
+        }
+
+        document.getElementById('summary-srp').textContent = "₱" + srp.toLocaleString('en-US', {minimumFractionDigits:2});
         const cashVal = cashTransferInput.value;
         document.getElementById('summary-cash').textContent = cashVal ? (cashVal.startsWith('₱') ? cashVal : '₱' + cashVal) : "₱0.00";
         const cashNum = parseFloat(cashVal.replace(/[₱,]/g, '')) || 0;
@@ -995,7 +1007,9 @@
         quoteTermsContainer.innerHTML = Object.keys(bank.rates).map(t => `<label class="term-item"><input type="radio" name="quote-term" value="${t}" onchange="calculateQuote()"> ${t === 'straight' ? 'Straight' : t + ' Mos'}</label>`).join('');
         const first = quoteTermsContainer.querySelector('input'); if (first) { first.checked = true; window.calculateQuote(); }
       });
-      [itemCostInput, cashTransferInput].forEach(el => el?.addEventListener('input', window.calculateQuote));
+      itemCostInput?.addEventListener('input', () => window.calculateQuote('item-cost'));
+      baseSrpDisplay?.addEventListener('input', () => window.calculateQuote('base-srp-display'));
+      cashTransferInput?.addEventListener('input', () => window.calculateQuote());
       document.getElementById('toggleQuoteSettings')?.addEventListener('click', () => document.getElementById('quoteSettingsPanel').classList.toggle('active'));
 
       // NOTES & FIREBASE SYNC
